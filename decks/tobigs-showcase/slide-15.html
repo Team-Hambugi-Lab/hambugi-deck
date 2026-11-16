@@ -7,30 +7,28 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
-  font-family: 'Pretendard', sans-serif; padding: 36pt 48pt; display: flex; flex-direction: column; }
+  font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
-.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.16em; color: #888888; }
-.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
-.rule { width: 60pt; height: 2pt; background: #E63030; margin: 14pt 0 18pt; }
-h1 { font-size: 32pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
+.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
+.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; line-height: 1.4; padding-bottom: 2pt; }
+.rule { width: 48pt; height: 2pt; background: #E63030; margin: 10pt 0 0; }
+h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
 h3 { font-size: 16pt; font-weight: 700; line-height: 1.4; }
-p, li { font-size: 14pt; line-height: 1.6; }
+p, li { font-size: 14pt; line-height: 1.55; }
+b { font-weight: 700; }
 .muted { color: #888888; }
 .red { color: #E63030; }
 .cap { font-size: 12pt; color: #888888; line-height: 1.5; }
+.small { font-size: 12pt; line-height: 1.5; }
 ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
+.redtop { border-top: 2pt solid #E63030; }
+img { display: block; object-fit: contain; }
+table { border-collapse: collapse; width: 100%; }
+td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">04 통합·제출 · OUTPUT</p><p class="label">15 / 17</p></div><div style="margin-top:22pt;"><h1 style="font-size:28pt;">집계구 기반 사회적 고립 조기 탐지 및 지속 관리</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-bottom:16pt;">
-<div style="display:grid; grid-template-columns:1fr 1.2fr; gap:32pt; align-items:start;">
-  <div data-image-placeholder="결과보고서 표지" style="height:150pt; border:1pt solid #BBBBBB;"></div>
-  <div><p style="font-size:16pt;">지역의 신호를 복지 지원으로 연결하는 AI 에이전트</p>
-  <ul style="margin-top:12pt;">
-  <li class="hair" style="padding:6pt 0;"><span class="red num">01</span>&nbsp; 문제 정의</li>
-  <li class="hair" style="padding:6pt 0;"><span class="red num">02</span>&nbsp; 분석 방법</li>
-  <li class="hair" style="padding:6pt 0;"><span class="red num">03</span>&nbsp; 분석 결과 · 에이전트 흐름</li>
-  </ul></div>
-</div></div></body></html>
+<body><div class="strip"><p class="label">02 데이터 이해 · WEEK 5</p><p class="label">15 / 33</p></div><div style="margin-top:14pt;"><h1>일하는 방식을 먼저 정했다</h1><p class="muted" style="font-size:14pt; margin-top:4pt;">10/8 주최 측 주제설명자료가 갱신되며 탐지부터 복지자원 추천까지가 요구사항이 됐다</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;"><div class="dark" style="padding-top:8pt;"><p class="label red">ISSUE</p><h3 style="margin-top:4pt;">이슈로 쪼갠다</h3><p class="small" style="margin-top:4pt;">작업 단위마다 이슈를 열고 담당자와 산출물, 드라이브 위치까지 본문에 적었다</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">BRANCH</p><h3 style="margin-top:4pt;">봇이 브랜치를 판다</h3><p class="small" style="margin-top:4pt;">이슈 헬퍼가 붙여 준 이름으로 브랜치를 만들고 설계 문서부터 썼다</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">PR</p><h3 style="margin-top:4pt;">PR로 합친다</h3><p class="small" style="margin-top:4pt;">CI에서 실데이터 테스트를 분리하고 squash 머지로 이력을 정리했다</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">WIKI</p><h3 style="margin-top:4pt;">근거는 위키로</h3><p class="small" style="margin-top:4pt;">고립 연구와 조례 자료를 레포 위키로 공유했다</p></div></div></div></body></html>

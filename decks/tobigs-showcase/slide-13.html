@@ -7,28 +7,36 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
-  font-family: 'Pretendard', sans-serif; padding: 36pt 48pt; display: flex; flex-direction: column; }
+  font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
-.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.16em; color: #888888; }
-.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
-.rule { width: 60pt; height: 2pt; background: #E63030; margin: 14pt 0 18pt; }
-h1 { font-size: 32pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
+.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
+.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; line-height: 1.4; padding-bottom: 2pt; }
+.rule { width: 48pt; height: 2pt; background: #E63030; margin: 10pt 0 0; }
+h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
 h3 { font-size: 16pt; font-weight: 700; line-height: 1.4; }
-p, li { font-size: 14pt; line-height: 1.6; }
+p, li { font-size: 14pt; line-height: 1.55; }
+b { font-weight: 700; }
 .muted { color: #888888; }
 .red { color: #E63030; }
 .cap { font-size: 12pt; color: #888888; line-height: 1.5; }
+.small { font-size: 12pt; line-height: 1.5; }
 ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
+.redtop { border-top: 2pt solid #E63030; }
+img { display: block; object-fit: contain; }
+table { border-collapse: collapse; width: 100%; }
+td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body style="justify-content:space-between;"><div class="strip"><p class="label">SECTION 04</p><p class="label">13 / 17</p></div>
-<div style="display:flex; align-items:flex-end; gap:28pt;">
-  <p class="num" style="font-size:120pt; line-height:1.4;">04</p>
-  <div style="padding-bottom:10pt;"><p class="label red">WEEK 7</p>
-  <h1 style="font-size:40pt; margin-top:6pt;">통합·제출</h1>
-  <p class="muted" style="font-size:16pt; margin-top:8pt;">마지막 일주일</p></div>
+<body><div class="strip"><p class="label">02 데이터 이해 · WEEK 3</p><p class="label">13 / 33</p></div><div style="margin-top:14pt;"><h1>왜 강남과 춘천만 줬을까</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:32pt;">
+  <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">Gangnam</p>
+  <p class="muted">대도시 · 1인가구 · 직장 밀집 · 3.4 km</p></div>
+  <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">Chuncheon</p>
+  <p class="muted">중소도시 · 고령화 · 넓은 외곽 · 15.4 km</p></div>
 </div>
-<div style="height:8pt; background:#1A1A1A;"></div></body></html>
+<p style="font-size:18pt; margin-top:24pt;">정반대인 두 지역에서 <b>모두 통하는 지표</b>를 만들면 된다.</p>
+<p class="cap" style="margin-top:8pt;">EDA 중 춘천 일부 성·연령 집단에서 유동인구와 카드 결제가 함께 줄어든 것을 보고, 지역을 넓히기보다 두 지역을 깊게 보기로 했다.</p></div></body></html>

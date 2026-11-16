@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
+  font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
+.strip { display: flex; justify-content: space-between; align-items: center; }
+.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
+.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; line-height: 1.4; padding-bottom: 2pt; }
+.rule { width: 48pt; height: 2pt; background: #E63030; margin: 10pt 0 0; }
+h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
+h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
+h3 { font-size: 16pt; font-weight: 700; line-height: 1.4; }
+p, li { font-size: 14pt; line-height: 1.55; }
+b { font-weight: 700; }
+.muted { color: #888888; }
+.red { color: #E63030; }
+.cap { font-size: 12pt; color: #888888; line-height: 1.5; }
+.small { font-size: 12pt; line-height: 1.5; }
+ul { list-style: none; }
+.hair { border-top: 1pt solid #BBBBBB; }
+.dark { border-top: 2pt solid #1A1A1A; }
+.redtop { border-top: 2pt solid #E63030; }
+img { display: block; object-fit: contain; }
+table { border-collapse: collapse; width: 100%; }
+td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
+</style>
+</head>
+<body><div class="strip"><p class="label">03 분석 · STEP 1</p><p class="label">20 / 33</p></div><div style="margin-top:14pt;"><h1>두 테마의 상위 지역은 절반만 겹친다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1.5fr 1fr; gap:24pt; align-items:center;">
+  <img src="./assets/map_theme.png" alt="테마 A, B 상위 집계구 지도" style="width:100%; height:240pt;">
+  <div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8pt;">
+    <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">159<span style="font-size:16pt;"></span></p><p class="cap">A만 상위</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">156<span style="font-size:16pt;"></span></p><p class="cap">중복</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">159<span style="font-size:16pt;"></span></p><p class="cap">B만 상위</p></div>
+  </div>
+  <p class="small" style="margin-top:16pt;">종합 등급만 쓰면 한쪽 테마의 높은 노출이 묻힌다. 종합 5등급에 더해 <b>한 테마라도 백분위 80 이상</b>인 곳을 관찰 후보로 넣었다.</p>
+  <p class="num red" style="font-size:28pt; margin-top:10pt;">477<span style="font-size:14pt;"> 곳</span></p>
+  <p class="cap">1,698개 집계구 중 관찰 후보</p></div>
+</div></div></body></html>

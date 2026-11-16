@@ -7,24 +7,35 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
-  font-family: 'Pretendard', sans-serif; padding: 36pt 48pt; display: flex; flex-direction: column; }
+  font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
-.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.16em; color: #888888; }
-.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
-.rule { width: 60pt; height: 2pt; background: #E63030; margin: 14pt 0 18pt; }
-h1 { font-size: 32pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
+.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
+.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; line-height: 1.4; padding-bottom: 2pt; }
+.rule { width: 48pt; height: 2pt; background: #E63030; margin: 10pt 0 0; }
+h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
 h3 { font-size: 16pt; font-weight: 700; line-height: 1.4; }
-p, li { font-size: 14pt; line-height: 1.6; }
+p, li { font-size: 14pt; line-height: 1.55; }
+b { font-weight: 700; }
 .muted { color: #888888; }
 .red { color: #E63030; }
 .cap { font-size: 12pt; color: #888888; line-height: 1.5; }
+.small { font-size: 12pt; line-height: 1.5; }
 ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
+.redtop { border-top: 2pt solid #E63030; }
+img { display: block; object-fit: contain; }
+table { border-collapse: collapse; width: 100%; }
+td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body style="justify-content:space-between;"><div class="strip"><p class="label">CLOSING</p><p class="label">17 / 17</p></div>
-<div><h1 style="font-size:56pt;">감사합니다</h1><div class="rule"></div>
-<p class="num" style="font-size:20pt;">Team Hambugi</p></div>
-<div style="height:8pt; background:#1A1A1A;"></div></body></html>
+<body><div class="strip"><p class="label">03 분석 · WHY 집계구</p><p class="label">17 / 33</p></div><div style="margin-top:14pt;"><h1>동 평균은 동네 안의 차이를 가린다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1fr 1.15fr; gap:24pt; align-items:center;">
+  <img src="./assets/map_yeoksam.png" alt="역삼2동 집계구별 1인가구 비율 지도" style="width:100%; height:236pt;">
+  <div><p class="label red">역삼2동 1인가구 비율</p>
+  <p class="num" style="font-size:48pt;">36.5<span style="font-size:20pt;">%</span></p>
+  <p class="cap">동 평균</p>
+  <ul><li class="hair" style="padding:6pt 0;">주택가 덩어리 <b>66%</b> vs 아파트 단지 <b>8%</b></li><li class="hair" style="padding:6pt 0;">20~50%인 집계구에 사는 가구는 약 <b>5%</b>뿐</li><li class="hair" style="padding:6pt 0;">그래서 통계청이 공표하는 가장 작은 단위, <b>집계구</b>로 본다</li></ul></div>
+</div></div></body></html>

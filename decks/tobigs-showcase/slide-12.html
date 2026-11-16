@@ -7,32 +7,28 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
-  font-family: 'Pretendard', sans-serif; padding: 36pt 48pt; display: flex; flex-direction: column; }
+  font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
-.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.16em; color: #888888; }
-.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
-.rule { width: 60pt; height: 2pt; background: #E63030; margin: 14pt 0 18pt; }
-h1 { font-size: 32pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
+.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
+.num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; line-height: 1.4; padding-bottom: 2pt; }
+.rule { width: 48pt; height: 2pt; background: #E63030; margin: 10pt 0 0; }
+h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
 h3 { font-size: 16pt; font-weight: 700; line-height: 1.4; }
-p, li { font-size: 14pt; line-height: 1.6; }
+p, li { font-size: 14pt; line-height: 1.55; }
+b { font-weight: 700; }
 .muted { color: #888888; }
 .red { color: #E63030; }
 .cap { font-size: 12pt; color: #888888; line-height: 1.5; }
+.small { font-size: 12pt; line-height: 1.5; }
 ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
+.redtop { border-top: 2pt solid #E63030; }
+img { display: block; object-fit: contain; }
+table { border-collapse: collapse; width: 100%; }
+td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">03 분석 · RESULT</p><p class="label">12 / 17</p></div><div style="margin-top:22pt;"><h1>동 평균은 집계구 안의 차이를 가린다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-bottom:16pt;">
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:32pt;">
-  <div><p class="label red">역삼2동 1인가구 비율</p>
-  <div style="display:flex; align-items:baseline; gap:12pt; margin-top:6pt;">
-  <p class="num" style="font-size:56pt; line-height:1.4;">36.5%</p><p class="muted">동 평균</p></div>
-  <p style="margin-top:4pt;">같은 동 안에서도 집계구에 따라 <b>60% 이상</b>과 <b>10% 미만</b>이 나란히 있다.</p></div>
-  <div><ul>
-  <li class="hair" style="padding:8pt 0;"><b>60대 이상</b> 활동 저하 신호는 유효<br><span class="muted">외부 대조 8개 모두 예상 방향</span></li>
-  <li class="hair" style="padding:8pt 0;"><b>20–30대</b>는 그대로 쓰기 어려움</li>
-  <li class="hair" style="padding:8pt 0;">통신 관심집단으로 지수 외부 검증<br><span class="muted">강남 22개 동</span></li>
-  </ul></div>
-</div></div></body></html>
+<body><div class="strip"><p class="label">02 데이터 이해 · DATA</p><p class="label">12 / 33</p></div><div style="margin-top:14pt;"><h1>무엇으로 고립을 볼 것인가</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><table><colgroup><col style="width:14%"><col style="width:44%"><col style="width:22%"><col style="width:20%"></colgroup><tr><th><p class="small"><b>구분</b></p></th><th><p class="small"><b>데이터</b></p></th><th><p class="small"><b>기관</b></p></th><th><p class="small"><b>쓰임</b></p></th></tr><tr><td><p class="small">대회 제공</p></td><td><p class="small">이동전화 유동인구 (성·연령·시간대·요일)</p></td><td><p class="small">SK텔레콤</p></td><td><p class="small">활동 신호</p></td></tr><tr><td><p class="small">대회 제공</p></td><td><p class="small">카드 결제·이용고객 (주제2)</p></td><td><p class="small">신한카드</p></td><td><p class="small">소비 맥락</p></td></tr><tr><td><p class="small">외부</p></td><td><p class="small">SGIS 집계구 통계 297개 항목</p></td><td><p class="small">통계청</p></td><td><p class="small">지역 노출</p></td></tr><tr><td><p class="small">외부</p></td><td><p class="small">시민생활 데이터 (관심집단·통신정보)</p></td><td><p class="small">서울시</p></td><td><p class="small">외부 검증</p></td></tr><tr><td><p class="small">외부</p></td><td><p class="small">고립·은둔 청년 실태조사, 노인실태조사</p></td><td><p class="small">복지부·서울시</p></td><td><p class="small">고립 특징</p></td></tr><tr><td><p class="small">외부</p></td><td><p class="small">복지·공공기관 17,925곳, 지원사업 60건</p></td><td><p class="small">공공데이터포털 등</p></td><td><p class="small">추천</p></td></tr></table></div></body></html>
