@@ -620,12 +620,14 @@ page("06 회고 · KPT", "계속할 것과 아쉬웠던 것", f'''
             "작업은 작은 PR로 나눠 올리기"], pad=6)}</div>
 </div>''', sub="세 명의 주차 보고서에서")
 
+labels = ["1주차", "3주차", "4주차", "5주차", "9/17", "9/20", "6주차"]
 photos = ''.join(
-    f'<img src="./assets/photos/photo-{i}.png" alt="팀 활동 사진 {i}" style="width:100%; height:114pt; object-fit:cover;">'
-    for i in range(1, 5))
+    f'<div><img src="./assets/photos/photo-{i}.jpg" alt="{lab} 팀 활동 사진" style="width:100%; height:96pt; object-fit:cover;">'
+    f'<p class="cap" style="margin-top:3pt;">{lab}</p></div>'
+    for i, lab in enumerate(labels, 1))
+photos += '<div style="display:flex; align-items:center; justify-content:center;"><p class="small muted">함께 작업하던 날들</p></div>'
 page("06 회고 · TOGETHER", "함께한 8주",
-     f'<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12pt;">{photos}</div>'
-     '<p class="cap" style="margin-top:14pt;">함께 작업하던 날들</p>')
+     f'<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8pt 10pt;">{photos}</div>')
 
 raw(f'''<body style="justify-content:space-between;">{strip("CLOSING")}
 <div><h1 style="font-size:52pt;">감사합니다</h1><div class="rule" style="margin:14pt 0;"></div>
