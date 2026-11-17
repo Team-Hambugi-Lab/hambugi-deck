@@ -8,8 +8,8 @@
 - **Aspect Ratio**: 16:9
 - **style**: `editorial-magazine` 기반 커스텀
   - 배경은 전 슬라이드 흰색(#FFFFFF). 원본의 우측 45% 다크 블록은 쓰지 않고, 섹션 디바이더에서만 얇은 근흑색(#1A1A1A) 띠·숫자로 대체
-  - 포인트 컬러: 시그널 레드(#E63030) 2pt 룰 라인, 캡션 회색(#BBBBBB 대신 가독성 위해 #888888)
-  - 폰트: 한글 제목 Pretendard Bold(원본 Playfair Italic은 영문 장식 숫자·라벨에만), 본문 Pretendard Regular, 라벨 Space Mono
+  - 포인트 컬러: 남색(#1F3A6E) 2pt 룰 라인, 캡션 회색(#BBBBBB 대신 가독성 위해 #888888)
+  - 폰트: Pretendard 단일 (숫자 포함)
   - **폰트 크기는 전부 정수 pt**: 제목 40 / 섹션 숫자 96 / 소제목 20 / 본문 14 / 라벨 9 / 캡션 10
 
 ## Slide Composition
