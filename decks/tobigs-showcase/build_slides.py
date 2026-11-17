@@ -124,8 +124,8 @@ def two(left, right, ratio="1fr 1fr", gap=28):
 # ================= 도입 =================
 raw('''<body style="justify-content:space-between;">
 <div class="strip"><p class="label">TOBIGS 26기 심화세션 활동 공유</p><p class="label">DATA ENGINEERING TRACK</p></div>
-<div><p class="num red" style="font-size:20pt;">Team Hambugi</p>
-<h1 style="font-size:52pt; margin-top:6pt;">8주, 공모전 셋</h1>
+<div><h1 style="font-size:52pt;">투빅스 심화세션 발표회</h1>
+<p class="num red" style="font-size:24pt; margin-top:6pt;">Team Hambugi</p>
 <div class="rule" style="margin:14pt 0;"></div>
 <p style="font-size:16pt;">데이터 엔지니어링을 배우고, 바로 공모전에 써 본 기록</p></div>
 <div class="strip hair" style="padding-top:10pt;"><p class="cap">김태은 · 이정연 · 진재언</p>
