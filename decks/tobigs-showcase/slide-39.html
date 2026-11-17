@@ -33,9 +33,13 @@ td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">05 분석 · RESULT</p><p class="label">39 / 50</p></div><div style="margin-top:14pt;"><h1>두 신호를 교차해 다섯 유형으로</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-<div style="display:grid; grid-template-columns:1.3fr 1fr; gap:22pt; align-items:center;">
-  <img src="./assets/map_type.png" alt="지역 유형 분류 지도" style="width:100%; height:240pt;">
-  <div><table><colgroup><col style="width:40%"><col style="width:20%"><col style="width:20%"><col style="width:20%"></colgroup><tr><th><p class="small"><b>유형</b></p></th><th><p class="small"><b>강남</b></p></th><th><p class="small"><b>춘천</b></p></th><th><p class="small"><b>합계</b></p></th></tr><tr><td><p class="small"><b class='red'>집중관찰</b></p></td><td><p class="small">133</p></td><td><p class="small">24</p></td><td><p class="small"><b>157</b></p></td></tr><tr><td><p class="small">잠재위험</p></td><td><p class="small">151</p></td><td><p class="small">120</p></td><td><p class="small">271</p></td></tr><tr><td><p class="small">활동저하</p></td><td><p class="small">157</p></td><td><p class="small">133</p></td><td><p class="small">290</p></td></tr><tr><td><p class="small">일반</p></td><td><p class="small">421</p></td><td><p class="small">232</p></td><td><p class="small">653</p></td></tr><tr><td><p class="small">확인필요</p></td><td><p class="small">236</p></td><td><p class="small">91</p></td><td><p class="small">327</p></td></tr></table>
-  <p class="cap" style="margin-top:8pt;">집중관찰 = 지수 관찰 후보이면서 활동 신호도 나타난 곳. 판단이 보류된 곳은 지우지 않고 확인필요로 남겼다.</p></div>
-</div></div><div class="prog" style="width:78%;"></div></body></html>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">05 분석 · VALIDATION</p><p class="label">39 / 51</p></div><div style="margin-top:14pt;"><h1>만든 지표가 현실과 맞는가</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
+  <div><p class="label red">SGIS 지수 vs 서울시 관심집단 비율</p>
+  <table><colgroup><col style="width:65%"><col style="width:35%"></colgroup><tr><th><p class="small"><b>지표</b></p></th><th><p class="small"><b>순위상관 ρ</b></p></th></tr><tr><td><p class="small">테마 A 고령 · 독거</p></td><td><p class="small">+0.680</p></td></tr><tr><td><p class="small">테마 B 중장년 · 주거취약</p></td><td><p class="small">+0.633</p></td></tr><tr><td><p class="small">종합 점수</p></td><td><p class="small">+0.639</p></td></tr></table>
+  <p class="cap" style="margin-top:6pt;">강남 22개 동 전체, 9개 대조 모두 양의 상관</p></div>
+  <div><p class="label red">활동 신호율 vs 60대 이상 1인가구 통신정보</p>
+  <table><colgroup><col style="width:50%"><col style="width:25%"><col style="width:25%"></colgroup><tr><th><p class="small"><b>행동 지표</b></p></th><th><p class="small"><b>평일 ρ</b></p></th><th><p class="small"><b>휴일 ρ</b></p></th></tr><tr><td><p class="small">집 체류시간</p></td><td><p class="small">+0.509</p></td><td><p class="small">+0.438</p></td></tr><tr><td><p class="small">이동 횟수</p></td><td><p class="small">-0.601</p></td><td><p class="small">-0.493</p></td></tr></table>
+  <p class="cap" style="margin-top:6pt;">신호가 많은 동일수록 집에 오래 머물고 덜 움직였다. 8개 대조 모두 예상 방향</p></div>
+</div>
+<p class="small" style="margin-top:16pt;">20~30대는 같은 방식이 맞지 않아 신호로 쓰지 않았다. 안 되는 것을 확인한 것도 결과였다.</p></div><div class="prog" style="width:76%;"></div></body></html>

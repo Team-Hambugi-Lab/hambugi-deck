@@ -211,6 +211,14 @@ page("02 비자부기 · WHAT", "충북 외국인 주민을 위한 다국어 AI 
              "<b>캘린더 · 체크리스트</b>&nbsp; 준비 과정 관리",
              "<b>기관 지도</b>&nbsp; 카카오맵으로 실제 기관 표시"], pad=7)))
 
+page("02 비자부기 · SCREEN", "실제로 돌아가는 화면", f'''
+<div style="display:grid; grid-template-columns:1.9fr 1fr; gap:20pt; align-items:start;">
+  <div><img src="./assets/visa_home.png" alt="비자부기 홈 화면" style="width:100%; height:226pt; border:1pt solid #BBBBBB;">
+  <p class="cap" style="margin-top:6pt;">홈: 준비 현황과 현재 단계를 한눈에</p></div>
+  <div><img src="./assets/visa_ocr.png" alt="비자부기 OCR 서류 점검 화면" style="width:100%; height:226pt; border:1pt solid #BBBBBB;">
+  <p class="cap" style="margin-top:6pt;">서류: 신청서를 찍으면 누락 항목 점검</p></div>
+</div>''')
+
 page("02 비자부기 · F-2-R", "공고 21건을 서비스 데이터로", two(
     '<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10pt;">'
     + ''.join(stat(v, u, c, 24) for v, u, c in [("21", "건", "수집 문서"), ("10", "개", "공고 차수"), ("60", "건", "시 · 군별 쿼터"), ("67", "건", "세부 요건"),

@@ -33,14 +33,12 @@ td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">05 분석 · STEP 1</p><p class="label">36 / 50</p></div><div style="margin-top:14pt;"><h1>두 테마의 상위 지역은 절반만 겹친다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-<div style="display:grid; grid-template-columns:1.5fr 1fr; gap:24pt; align-items:center;">
-  <img src="./assets/map_theme.png" alt="테마 A, B 상위 집계구 지도" style="width:100%; height:240pt;">
-  <div>
-  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8pt;">
-    <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">159<span style="font-size:16pt;"></span></p><p class="cap">A만 상위</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">156<span style="font-size:16pt;"></span></p><p class="cap">중복</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">159<span style="font-size:16pt;"></span></p><p class="cap">B만 상위</p></div>
-  </div>
-  <p class="small" style="margin-top:16pt;">종합 등급만 쓰면 한쪽 테마의 높은 노출이 묻힌다. 종합 5등급에 더해 <b>한 테마라도 백분위 80 이상</b>인 곳을 관찰 후보로 넣었다.</p>
-  <p class="num red" style="font-size:28pt; margin-top:10pt;">477<span style="font-size:14pt;"> 곳</span></p>
-  <p class="cap">1,698개 집계구 중 관찰 후보</p></div>
-</div></div><div class="prog" style="width:72%;"></div></body></html>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">05 분석 · STEP 1</p><p class="label">36 / 51</p></div><div style="margin-top:14pt;"><h1>고립 위험 지수: 두 테마, 여섯 지표</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
+  <div><p class="label red">THEME A · 고령 + 독거</p>
+  <ul><li class="hair" style="padding:5pt 0;">독거 · 연령: 1인가구율 × 50세 이상 비율</li><li class="hair" style="padding:5pt 0;">노후주거: 1989년 이전 주택 × 비아파트 비율</li><li class="hair" style="padding:5pt 0;">고령 비중: 65세 이상 비율</li></ul></div>
+  <div><p class="label red">THEME B · 중장년 독거 + 주거취약</p>
+  <ul><li class="hair" style="padding:5pt 0;">남성 · 독거: 50~64세 남성 × 1인가구율</li><li class="hair" style="padding:5pt 0;">비주택 · 연령: 고시원 등 거처 × 50세 이상</li><li class="hair" style="padding:5pt 0;">소형 · 비주거: 비주거용 건물 내 주택, 20㎡ 이하</li></ul></div>
+</div>
+<p class="small" style="margin-top:18pt;">테마별 표준화 점수를 백분위로 바꾸고, 종합 점수 = (A 백분위 + B 백분위) ÷ 2 를 1~5등급으로 나눴다.</p>
+<p class="cap" style="margin-top:4pt;">참고: America's Health Rankings Senior Report, CDC SVI, OECD 합성지수 지침, 복지부 중장년 남성 고독사 위험</p></div><div class="prog" style="width:71%;"></div></body></html>

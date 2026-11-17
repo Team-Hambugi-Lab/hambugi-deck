@@ -33,13 +33,14 @@ td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">05 분석 · STEP 2</p><p class="label">37 / 50</p></div><div style="margin-top:14pt;"><h1>기대보다 덜 움직이는 동네를 찾는다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-<div style="display:grid; grid-template-columns:1.25fr 1fr; gap:24pt; align-items:center;">
-  <div><img src="./assets/chart_residual.png" alt="예시 집계구의 실제 대비 기대 유동 비율" style="width:100%; height:150pt;">
-  <p class="cap" style="margin-top:6pt;">예시 집계구: 7·9·10·11월이 판정선 미만, 평균 로그 잔차 -0.108</p></div>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">05 분석 · STEP 1</p><p class="label">37 / 51</p></div><div style="margin-top:14pt;"><h1>두 테마의 상위 지역은 절반만 겹친다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1.5fr 1fr; gap:24pt; align-items:center;">
+  <img src="./assets/map_theme.png" alt="테마 A, B 상위 집계구 지도" style="width:100%; height:240pt;">
   <div>
-  <p class="small"><b>기대 유동</b> = OLS(60대 이상 거주인구, 종사자 수, 다른 연령 유동, 월, 지역)</p>
-  <ul><li class="hair" style="padding:5pt 0;">6개월 중 <b>4개월 이상</b> 로그 잔차 &lt; -0.1</li><li class="hair" style="padding:5pt 0;">6개월 평균 로그 잔차 &lt; -0.1</li><li class="hair" style="padding:5pt 0;">-0.1은 실제 유동이 기대보다 약 9.5% 적다는 뜻</li></ul>
-  <p class="num red" style="font-size:28pt; margin-top:8pt;">461<span style="font-size:14pt;"> 곳</span></p>
-  <p class="cap">60대 이상 활동 저하 신호 집계구</p></div>
-</div></div><div class="prog" style="width:74%;"></div></body></html>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8pt;">
+    <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">159<span style="font-size:16pt;"></span></p><p class="cap">A만 상위</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">156<span style="font-size:16pt;"></span></p><p class="cap">중복</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:28pt;">159<span style="font-size:16pt;"></span></p><p class="cap">B만 상위</p></div>
+  </div>
+  <p class="small" style="margin-top:16pt;">종합 등급만 쓰면 한쪽 테마의 높은 노출이 묻힌다. 종합 5등급에 더해 <b>한 테마라도 백분위 80 이상</b>인 곳을 관찰 후보로 넣었다.</p>
+  <p class="num red" style="font-size:28pt; margin-top:10pt;">477<span style="font-size:14pt;"> 곳</span></p>
+  <p class="cap">1,698개 집계구 중 관찰 후보</p></div>
+</div></div><div class="prog" style="width:73%;"></div></body></html>
