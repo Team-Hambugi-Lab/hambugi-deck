@@ -139,8 +139,8 @@ page("TEAM", "팀 햄부기", two(cols([
     ("김태은", "파이프라인 · 검증", "DE 개론 발표, 비자 공통 스키마와 월별 공고 파이프라인, 비자부기 서비스, 빅콘 데이터 전수 검증과 지표 재설계, 기관 태그"),
     ("이정연", "모델링 · 분석 · 설계", "저장·모델링 발표, HWPX 원문 파싱, 미래에셋 RAG, 빅콘 주제와 에이전트 흐름, 지수 재현, 활동 신호, 위험 특징 사전"),
     ("진재언", "구조화 · 공간 · 지수", "오케스트레이션 발표, F-2-R 공고 구조화, 공통 스키마 v2와 Supabase 적재, SK 데이터 통합, SGIS 고립 위험 지수"),
-], gap=14), '<img src="./assets/hambugi_meme.png" alt="햄부기 밈 이미지" style="width:100%; height:190pt;">'
-    '<p class="cap" style="margin-top:4pt; text-align:center;">팀 공식 밈</p>', ratio="3fr 1fr", gap=20),
+], gap=14), '<img src="./assets/team_logo.png" alt="Team Hambugi 로고" style="width:100%; height:170pt;">',
+    ratio="3fr 1fr", gap=20),
     sub="팀명의 부기는 거북이에서 따왔다. 햄은 묻지 마세요")
 
 toc = [("01", "데이터 엔지니어링 학습", "개념부터 나눠서 발표", "1주차"),
