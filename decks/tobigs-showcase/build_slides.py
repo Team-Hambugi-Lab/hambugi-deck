@@ -39,27 +39,32 @@ th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </head>
 """
 
-S = {}
+S = []
 
 
-def strip(label, n):
-    """상단 라벨 띠."""
+def strip(label):
+    """상단 라벨 띠. 번호는 추가 순서로 자동 부여."""
     return (f'<div class="strip"><p class="label">{label}</p>'
-            f'<p class="label">{n:02d} / {{TOTAL}}</p></div>')
+            f'<p class="label">{len(S) + 1:02d} / {{TOTAL}}</p></div>')
 
 
-def page(n, label, title, body, sub=""):
+def raw(html):
+    """완성된 슬라이드 HTML 추가."""
+    S.append(HEAD + html)
+
+
+def page(label, title, body, sub=""):
     """일반 콘텐츠 슬라이드."""
     sub_html = f'<p class="muted" style="font-size:14pt; margin-top:4pt;">{sub}</p>' if sub else ""
-    S[n] = (HEAD + f'<body>{strip(label, n)}'
-            f'<div style="margin-top:14pt;"><h1>{title}</h1>{sub_html}<div class="rule"></div></div>'
-            f'<div style="flex:1; display:flex; flex-direction:column; justify-content:center;">'
-            f'{body}</div></body></html>')
+    raw(f'<body>{strip(label)}'
+        f'<div style="margin-top:14pt;"><h1>{title}</h1>{sub_html}<div class="rule"></div></div>'
+        f'<div style="flex:1; display:flex; flex-direction:column; justify-content:center;">'
+        f'{body}</div></body></html>')
 
 
-def divider(n, num, title, sub, weeks):
+def divider(num, title, sub, weeks):
     """섹션 디바이더."""
-    S[n] = (HEAD + f'''<body style="justify-content:space-between;">{strip("SECTION " + num, n)}
+    raw(f'''<body style="justify-content:space-between;">{strip("SECTION " + num)}
 <div style="display:flex; align-items:flex-end; gap:28pt;">
   <p class="num" style="font-size:120pt; line-height:1.4;">{num}</p>
   <div style="padding-bottom:22pt;"><p class="label red">{weeks}</p>
@@ -100,150 +105,274 @@ def bullets(items, pad=6):
         f'<li class="hair" style="padding:{pad}pt 0;">{t}</li>' for t in items) + '</ul>'
 
 
-# ---------- 도입 ----------
-S[1] = HEAD + '''<body style="justify-content:space-between;">
-<div class="strip"><p class="label">TOBIGS 심화세션 활동 공유</p><p class="label">2026.09.10 ~ 10.26</p></div>
+def steps(items, last_accent=True):
+    """가로 단계 흐름: (라벨, 본문)."""
+    n = len(items)
+    cells = ''.join(
+        f'<div class="{"redtop" if last_accent and i == n - 1 else "dark"}" style="padding-top:8pt;">'
+        f'<p class="label red">{i + 1:02d} {a}</p><p class="small" style="margin-top:4pt;">{b}</p></div>'
+        for i, (a, b) in enumerate(items))
+    return f'<div style="display:grid; grid-template-columns:repeat({n},1fr); gap:10pt;">{cells}</div>'
+
+
+def two(left, right, ratio="1fr 1fr", gap=28):
+    """2단 레이아웃."""
+    return (f'<div style="display:grid; grid-template-columns:{ratio}; gap:{gap}pt; align-items:start;">'
+            f'<div>{left}</div><div>{right}</div></div>')
+
+
+# ================= 도입 =================
+raw('''<body style="justify-content:space-between;">
+<div class="strip"><p class="label">TOBIGS 26기 심화세션 활동 공유</p><p class="label">DATA ENGINEERING TRACK</p></div>
 <div><p class="num red" style="font-size:20pt;">Team Hambugi</p>
-<h1 style="font-size:52pt; margin-top:6pt;">7주, 대회 셋,<br>제출 하나</h1>
+<h1 style="font-size:52pt; margin-top:6pt;">8주, 공모전 셋</h1>
 <div class="rule" style="margin:14pt 0;"></div>
-<p style="font-size:16pt;">사회적 고립 예방 AI 에이전트를 만들기까지의 기록</p></div>
+<p style="font-size:16pt;">데이터 엔지니어링을 배우고, 바로 공모전에 써 본 기록</p></div>
 <div class="strip hair" style="padding-top:10pt;"><p class="cap">김태은 · 이정연 · 진재언</p>
-<p class="cap">01 / {TOTAL}</p></div></body></html>'''
+<p class="cap">01 / {TOTAL}</p></div></body></html>''')
 
-page(2, "TEAM", "팀 햄부기", cols([
-    ("김태은", "에이전트 · 기관", "복지·공공기관 수집과 태그 분류, 에이전트 설계와 사용자 흐름"),
-    ("이정연", "신호 · 사전 · 검증", "활동 저하 신호, 위험 특징 사전, 외부 검증, 발표 설계와 제출 정리"),
-    ("진재언", "지수 · 지도", "상권 통합과 QGIS 시각화, SGIS 고립 위험 지수 v1에서 v3.3까지"),
-], gap=24), sub="팀명의 부기는 거북이에서 따왔다")
+page("TEAM", "팀 햄부기", cols([
+    ("김태은", "파이프라인 · 검증", "DE 개론 발표, 비자 공통 스키마와 월별 공고 파이프라인, 비자부기 서비스, 빅콘 데이터 전수 검증과 지표 재설계, 기관 태그"),
+    ("이정연", "모델링 · 분석 · 설계", "저장·모델링 발표, HWPX 원문 파싱, 미래에셋 RAG, 빅콘 주제와 에이전트 흐름, 지수 재현, 활동 신호, 위험 특징 사전"),
+    ("진재언", "오케스트레이션 · 지수", "오케스트레이션 발표, 전국 상권 통합과 QGIS 시각화, SGIS 고립 위험 지수 v1에서 v3.3까지"),
+], gap=22), sub="팀명의 부기는 거북이에서 따왔다")
 
-toc = [("01", "탐색", "무엇을 할 것인가", "1~2주차"),
-       ("02", "데이터 이해", "강남과 춘천, 그리고 집계구", "3~5주차"),
-       ("03", "분석", "두 개의 신호와 하나의 사전", "6주차"),
-       ("04", "에이전트·제출", "결과를 서비스 흐름으로", "7주차"),
-       ("05", "회고", "숫자와 배운 점", "")]
+toc = [("01", "데이터 엔지니어링 학습", "개념부터 나눠서 발표", "1주차"),
+       ("02", "ICT 공모전 · 비자부기", "공공 문서를 서비스 데이터로", "2~3주차"),
+       ("03", "미래에셋 AI 페스티벌", "RAG를 끝까지 돌려 보기", "4주차"),
+       ("04", "빅콘테스트 · 탐색과 검증", "주제를 정하고 데이터를 의심하기", "5~6주차"),
+       ("05", "빅콘테스트 · 분석과 제출", "두 개의 신호와 하나의 에이전트", "7~8주차"),
+       ("06", "회고", "숫자와 배운 점", "")]
 rows = ''.join(
-    f'<div class="hair" style="display:grid; grid-template-columns:52pt 1fr 1.4fr 70pt; '
-    f'align-items:baseline; padding:6pt 0;"><p class="num red" style="font-size:20pt;">{a}</p>'
-    f'<h3>{b}</h3><p class="muted">{c}</p><p class="cap" style="text-align:right;">{d}</p></div>'
+    f'<div class="hair" style="display:grid; grid-template-columns:44pt 1.3fr 1.3fr 64pt; '
+    f'align-items:baseline; padding:5pt 0;"><p class="num red" style="font-size:18pt;">{a}</p>'
+    f'<h3 style="font-size:15pt;">{b}</h3><p class="muted small">{c}</p><p class="cap" style="text-align:right;">{d}</p></div>'
     for a, b, c, d in toc)
-page(3, "CONTENTS", "목차", rows)
+page("CONTENTS", "목차", rows)
 
-weeks = [("W1", "9/8", "안심구역 데이터 명세와 수상작 분석"),
-         ("W2", "9/15", "주제 대량 발산, 빅콘 주제 확정"),
-         ("W3", "9/22", "제공 데이터 EDA, 강남·춘천 해석"),
-         ("W4", "9/29", "집계구 마스터, CI·로더 정비"),
-         ("W5", "10/6", "요구사항 갱신, 방법론 위키"),
-         ("W6", "10/13", "이슈 분할, 지수·신호·사전"),
-         ("W7", "10/20", "통합, 발표자료, 10/26 제출")]
+weeks = [("W1", "DE 학습", "개론, 저장·모델링, 오케스트레이션 분담 발표"),
+         ("W2", "8/14 보고", "비자 공통 스키마, HWPX 파싱, 공고 파이프라인"),
+         ("W3", "8/28 제출", "비자부기 서비스 완성, ICT 공모전 제출"),
+         ("W4", "미래에셋", "금융 RAG 구현과 심사 결과 분석"),
+         ("W5", "빅콘 착수", "주제 확정, 제공 데이터 검증, 에이전트 흐름"),
+         ("W6", "9/20 ~ 10/8", "데이터 전수 재검증, 지표 재설계와 재현"),
+         ("W7", "10/13 ~", "지수, 활동 신호, 위험 특징 사전, 외부 검증"),
+         ("W8", "10/26 제출", "에이전트 설계, 발표자료, 빅콘 제출")]
 wk = ''.join(
-    f'<div class="{"redtop" if i == 6 else "dark"}" style="padding-top:8pt;">'
-    f'<p class="num {"red" if i == 6 else ""}" style="font-size:24pt;">{a}</p>'
+    f'<div class="{"redtop" if i == 7 else "dark"}" style="padding-top:8pt;">'
+    f'<p class="num {"red" if i == 7 else ""}" style="font-size:22pt;">{a}</p>'
     f'<p class="cap">{b}</p><p class="small" style="margin-top:6pt;">{c}</p></div>'
     for i, (a, b, c) in enumerate(weeks))
-page(4, "OVERVIEW", "7주를 한 장으로",
-     f'<div style="display:grid; grid-template-columns:repeat(7,1fr); gap:10pt;">{wk}</div>'
-     '<p class="cap" style="margin-top:22pt;">주차는 월요일 기준. 세션 기록, GitHub 이슈 21개, 커밋 229개를 바탕으로 정리</p>')
+page("OVERVIEW", "8주를 한 장으로",
+     f'<div style="display:grid; grid-template-columns:repeat(8,1fr); gap:9pt;">{wk}</div>'
+     '<p class="cap" style="margin-top:20pt;">팀원 주차 보고서, 세션 기록, GitHub 이슈와 커밋을 바탕으로 정리</p>')
 
-# ---------- 01 탐색 ----------
-divider(5, "01", "탐색", "무엇을 할 것인가", "WEEK 1 ~ 2")
+# ================= 01 DE 학습 =================
+divider("01", "데이터 엔지니어링 학습", "개념부터 나눠서 발표", "WEEK 1")
 
-page(6, "01 탐색 · WEEK 0", "출발점은 탈락이었다", f'''
-<div style="display:grid; grid-template-columns:1fr 1.1fr; gap:32pt; align-items:center;">
-  <div><p class="num" style="font-size:44pt;">ICT</p>
-  <p style="font-size:16pt; margin-top:4pt;">8월 ICT융합 공모전에 낸<br><b>비자부기</b>가 탈락했다.</p>
-  <p class="cap" style="margin-top:10pt;">심화세션은 이 회고에서 시작했다.</p></div>
-  {bullets([
-      '<b class="red num">9/13</b>&nbsp; 사업계획서 기준으로 탈락 원인을 분석',
-      '<b class="red num">9/17</b>&nbsp; GitHub 조직을 Team-Hambugi로 새로 정비',
-      '<b class="red num">9/20</b>&nbsp; 비자부기는 사업화 대신 팀 학습용 실험 프로젝트로',
-      '<b class="red num">9/20</b>&nbsp; 운영 DB와 분석 DB를 나누는 구조를 공부하기로',
-  ], pad=8)}
-</div>''')
+page("01 DE 학습 · WEEK 1", "세 명이 세 파트를 나눠 맡았다", cols([
+    ("발표 A · 김태은", "개론 · 파이프라인 기초", "데이터 엔지니어와 분석가, ETL vs ELT, Lake · Warehouse · Mart, Batch vs Streaming"),
+    ("발표 B · 이정연", "데이터 저장 · 모델링", "RDB vs NoSQL, OLTP vs OLAP, 정규화와 비정규화, 스타 · 스노우플레이크 스키마, 인덱스"),
+    ("발표 C · 진재언", "오케스트레이션 · 운영", "Airflow와 DAG가 필요한 이유, 멱등성과 증분 적재, 데이터 품질 모니터링"),
+], gap=22))
 
-page(7, "01 탐색 · WEEK 1", "데이터안심구역부터 뜯어봤다", cols([
-    ("RULE", "직접 가야 한다", "데이터는 센터 안에서만 분석 가능. 방문 일수가 정량 평가에 들어간다"),
-    ("DATA", "센터마다 데이터가 다르다", "수도권 센터에서 받을 수 있는 데이터부터 다시 추렸다"),
-    ("AWARD", "수상작은 결합한다", "역대 수상작은 대부분 여러 데이터를 결합해 하나의 처방까지 냈다"),
-]), sub="데이터 명세, 참가 규정, 역대 수상작을 Notion에 정리")
+page("01 DE 학습 · KEY CONCEPTS", "현업은 왜 이렇게 나눌까", two(
+    table(["구분", "OLTP", "OLAP"],
+          [["목적", "주문 · 결제 · 회원가입", "연도별 매출, 구매 패턴 분석"],
+           ["쿼리", "짧고 잦은 읽기 · 쓰기", "대량 조회 · 집계"],
+           ["설계", "정규화", "비정규화, 스타 스키마"],
+           ["핵심", "ACID 트랜잭션", "조회 성능"]], ["20%", "40%", "40%"]),
+    bullets(["<b>ETL vs ELT</b>&nbsp; 저장과 연산이 싸지면서 원본을 먼저 쌓고 나중에 변환하는 ELT가 부상",
+             "<b>인덱스</b>&nbsp; B+ Tree로 O(N) 검색을 O(log N)으로. 대신 쓰기 비용이 늘어난다",
+             "<b>스타 스키마</b>&nbsp; Fact 주변에 Dimension. JOIN이 적어 BI에 널리 쓰인다"], pad=7),
+    ratio="1.1fr 1fr"))
 
-ideas = [("감각부하 기상도", "환승역 시간대별 감각 부하 예측", "안심구역 데이터가 주인공이 되기 어려움"),
-         ("신경다양 아동 가족", "생활권 이용 장벽과 부담 낮은 코스", "대상 아동 분포를 데이터로 찾기 어려움"),
-         ("디지털 취약계층", "대면 창구 공백 지역 스크리닝", "발굴 결과를 검증할 방법이 약함"),
-         ("상권 문턱값", "중심지 이론 기반 최소 수요 산정", "AI 요소가 약하고 기존 서비스와 겹침"),
-         ("식품사막", "생활 필수시설 접근 공백", "국내 선행 연구가 이미 다수"),
-         ("독거노인 매칭", "고령 1인가구끼리 연결", "빅콘 고립 주제로 이어짐")]
+page("01 DE 학습 · APPLY", "배운 개념이 바로 공모전에 쓰였다", table(
+    ["배운 개념", "어디에 썼나"],
+    [["정규화 · 공통 스키마", "비자 유형 여러 개가 공유하는 요건 · 절차 · 쿼터 테이블 설계"],
+     ["원본 보존 · ELT", "PDF 변환본 대신 HWPX 원문을 직접 파싱"],
+     ["멱등성 · 증분 적재", "매달 올라오는 공고를 비교해 바뀐 것만 검토 리포트로"],
+     ["OLTP · OLAP 분리", "비자부기 운영 DB와 분석 DB를 나누는 구조 논의"],
+     ["데이터 품질", "빅콘 제공 데이터 20개 파일 전수 검증"]], ["32%", "68%"]))
+
+# ================= 02 ICT 비자부기 =================
+divider("02", "ICT 공모전 · 비자부기", "공공 문서를 서비스 데이터로", "WEEK 2 ~ 3")
+
+page("02 비자부기 · WHAT", "충북 외국인 주민을 위한 다국어 AI 행정지원", two(
+    '<p style="font-size:16pt;">비자 요건, 제출서류, 공고 일정, 지원기관을<br><b>한곳에서</b> 확인하는 서비스</p>'
+    '<p class="cap" style="margin-top:10pt;">제13회 전국 ICT융합 공모전 · 디지털 시제품 부문 · 2026.08.28 제출</p>'
+    '<div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12pt; margin-top:16pt;">'
+    + stat("24", "건", "분석한 공식 공고 · 지침 · 서식", 36) + stat("4", "종", "지원 비자 F-2-R · E-7-4R · F-4-R · D-2", 36) + '</div>',
+    bullets(["<b>챗봇</b>&nbsp; 요건 · 절차 · 서류 안내, 임금체불 · 산재 같은 위험상황은 전문기관으로",
+             "<b>OCR</b>&nbsp; 신청서 작성 상태와 누락 가능성 점검",
+             "<b>캘린더 · 체크리스트</b>&nbsp; 준비 과정 관리",
+             "<b>기관 지도</b>&nbsp; 카카오맵으로 실제 기관 표시"], pad=7)))
+
+page("02 비자부기 · SCHEMA", "비자 여러 개가 함께 쓰는 공통 스키마", two(
+    table(["테이블", "역할"],
+          [["visa_requirements", "비자 기본 정보"],
+           ["visa_requirement_criteria", "개별 심사요건 (OR 조건 그룹 구조화)"],
+           ["visa_process_stages", "신청 절차 단계"],
+           ["visa_quota_status", "잔여 인원 로그"],
+           ["change_history", "공고 회차 간 변경 이력"]], ["46%", "54%"]),
+    '<p class="label red">첫 적용 · F-4-R 12차 공고</p>'
+    '<div style="display:grid; grid-template-columns:1fr 1fr; gap:12pt; margin-top:6pt;">'
+    + stat("9", "건", "요건", 32) + stat("4", "단계", "절차", 32) + '</div>'
+    '<p class="small" style="margin-top:14pt;">코드리뷰로 복합조건 구조화, 레코드 수명주기, 쿼터 상태(정원 있음 · 무제한 · 미확인)를 정리</p>',
+    ratio="1.2fr 1fr"))
+
+page("02 비자부기 · PARSING", "PDF를 버리고 HWPX 원문으로 갔다", two(
+    bullets(["<b>문제</b>&nbsp; PDF로 변환하면 강조 표시된 숫자(나이 · 연수 기준)가 사라졌다",
+             "<b>구조</b>&nbsp; HWPX는 XML · 이미지 · 메타데이터를 묶은 ZIP. section0.xml에 본문",
+             "<b>누락</b>&nbsp; .text만 읽으면 자식 태그 뒤 문장(.tail)이 빠진다. itertext()로 복원",
+             "<b>표</b>&nbsp; tbl, tr, tc, t 순서로 따로 탐색해 행과 셀을 보존",
+             "<b>재귀</b>&nbsp; 중첩 깊이가 달라도 같은 방식으로 문서 전체를 탐색"], pad=6),
+    '<p class="label red">원문에서 데이터까지</p>'
+    + bullets(["HWPX 원본", "ZIP 내부 접근", "XML 파싱 · 트리 탐색", "텍스트 · 표 추출", "공통 스키마로 정제 · 저장"], pad=5),
+    ratio="1.5fr 1fr"))
+
+page("02 비자부기 · PIPELINE", "매달 올라오는 공고를 자동으로 반영", steps([
+    ("분류", "새 공고를 비자 유형별로 자동 분류"),
+    ("추출", "HWPX에서 요건 · 절차 · 쿼터 추출"),
+    ("비교", "기존 데이터와 차이 비교"),
+    ("리포트", "변경 내용을 검토 리포트로 생성"),
+    ("사람 검토", "DB는 자동 수정하지 않고 사람이 확인 후 반영"),
+]) + '<p class="small" style="margin-top:20pt;">실제 F-4-R 공고문으로 정상 케이스와 변경 케이스 모두 전 구간 검증</p>'
+   '<p class="cap" style="margin-top:4pt;">자격 판정은 AI가 임의로 하지 않고, 검수된 규칙과 공식기관 확인을 기준으로</p>')
+
+page("02 비자부기 · SERVICE", "제출 수준까지 한 주에 끌어올렸다", cols([
+    ("BACKEND", "인증 · BFF", "아이디 · 비밀번호 인증, 브라우저가 Supabase에 직접 붙지 않도록 BFF로 이관, RLS 정비"),
+    ("AI", "RAG 챗봇", "하이브리드 비자 상담 챗봇 MVP, OCR 서류 점검 결과와 연동, 다국어 응답 개선"),
+    ("UX", "온보딩 · 홈", "비자 4종 온보딩 퍼널, 실제 잔여 인원 표시, 서류 준비 단계를 실데이터로"),
+    ("INFRA", "지도 · 다국어", "카카오맵 기관 표시, next-intl 다국어 라우팅, 약관 · 개인정보처리방침"),
+], gap=14))
+
+page("02 비자부기 · AFTER", "결과는 탈락, 대신 남은 것", two(
+    bullets(["<b>9/13</b>&nbsp; 사업계획서를 기준으로 탈락 원인을 분석",
+             "<b>9/17</b>&nbsp; GitHub 조직을 Team-Hambugi로 정비",
+             "<b>9/20</b>&nbsp; 사업화 대신 팀 학습용 실험 프로젝트로 전환",
+             "<b>9/20</b>&nbsp; 운영 DB와 분석 DB를 나누는 구조를 다음 목표로"], pad=8),
+    '<p style="font-size:16pt; line-height:1.6;">공식 문서를 검색 · 요약하는 데서 멈추지 않고, <b>공고 차수별 요건과 적용기간을 구조화</b>한 경험이 남았다.</p>'))
+
+# ================= 03 미래에셋 =================
+divider("03", "미래에셋 AI 페스티벌", "RAG를 끝까지 돌려 보기", "WEEK 4")
+
+page("03 미래에셋 · BUILD", "금융 AI 서비스의 전체 흐름을 직접 구현", steps([
+    ("파싱", "금융 상품 문서 파싱"),
+    ("인덱스", "검색 인덱스 구축"),
+    ("라우팅", "질문 유형 분류"),
+    ("생성", "근거 기반 답변 생성"),
+    ("검증", "인용 번호 · 수치 근거 검증"),
+]) + '<p style="font-size:16pt; margin-top:24pt;">심사 결과를 분석해 보니, 품질은 생성 모델이 아니라 <b>검색과 검증</b>에서 갈렸다.</p>')
+
+page("03 미래에셋 · LESSONS", "어디서 틀렸고, 어떻게 고칠까", table(
+    ["취약점", "무슨 일이 있었나", "개선 방향"],
+    [["질문 분류 오류", "수수료 질문을 상품 추천으로 분류", "신뢰도가 낮으면 복수 경로 검토"],
+     ["검색 근거 부족", "비교 대상 일부 문서만 검색된 채 답변", "문서가 다 모이지 않으면 추정 답변 금지"],
+     ["문서 내용 혼입", "무관한 문장이 최종 답변에 포함", "검색 결과를 개별 검증 후 전달"],
+     ["검증 범위 한계", "논리 모순, 월 · 연 환산 누락은 통과", "질문 충족 여부와 계산까지 검증"],
+     ["외부 공격 노출", "/health, /openapi.json 노출", "허용 IP만 접근, 불필요 엔드포인트 차단"]],
+    ["20%", "42%", "38%"]),
+    sub="자연스러운 답변보다 정확한 근거와 안전한 실패가 중요하다")
+
+# ================= 04 빅콘 탐색·검증 =================
+divider("04", "빅콘테스트 · 탐색과 검증", "주제를 정하고 데이터를 의심하기", "WEEK 5 ~ 6")
+
+ideas = [("감각부하 기상도", "환승역 시간대별 감각 부하 예측"),
+         ("신경다양 아동 가족", "생활권 이용 장벽과 부담 낮은 코스"),
+         ("디지털 취약계층", "대면 창구 공백 지역 스크리닝"),
+         ("상권 문턱값", "중심지 이론 기반 최소 수요 산정"),
+         ("식품사막", "생활 필수시설 접근 공백"),
+         ("독거노인 매칭", "고령 1인가구끼리 연결")]
 grid = ''.join(
-    f'<div class="hair" style="padding:7pt 0;"><h3 style="font-size:14pt;">{a}</h3>'
-    f'<p class="small">{b}</p><p class="cap">{c}</p></div>' for a, b, c in ideas)
-page(8, "01 탐색 · 9/17", "하루 동안 주제를 쏟아냈다",
-     f'<div style="display:grid; grid-template-columns:repeat(3,1fr); column-gap:22pt;">{grid}</div>',
-     sub="떠오르면 바로 기획안으로 써 보고, 데이터로 증명할 수 있는지부터 따졌다")
+    f'<div class="hair" style="padding:8pt 0;"><h3 style="font-size:14pt;">{a}</h3>'
+    f'<p class="small muted">{b}</p></div>' for a, b in ideas)
+page("04 빅콘 · EXPLORE", "데이터안심구역과 빅콘을 동시에 뒤졌다",
+     f'<div style="display:grid; grid-template-columns:repeat(3,1fr); column-gap:22pt;">{grid}</div>'
+     '<p class="cap" style="margin-top:14pt;">9/17 하루 아이데이션 후보. 데이터로 증명할 수 있는지부터 따졌다</p>',
+     sub="안심구역은 수상작, 센터별 데이터, 방문 조건까지 정리")
 
-page(9, "01 탐색 · 9/20", "사회적 고립 예방·대응 AI 에이전트", f'''
-<div style="display:grid; grid-template-columns:1fr 1.2fr; gap:32pt;">
-  <div><p class="label red">DECISION</p>
-  <p style="font-size:16pt; margin-top:6pt;">빅콘테스트 AI데이터활용 분야<br>SK텔레콤 유동인구 × 신한카드 결제</p>
-  <p class="cap" style="margin-top:10pt;">같은 날 레포와 가상환경을 세팅하고 첫 이슈를 셋이 함께 열었다.</p></div>
-  <div><p class="label">주최 측 필수 포함 요소</p>
-  {bullets(["<b>1</b>&nbsp; 데이터 기반 인사이트: 위험 신호, 특성, 영향 요인",
-            "<b>2</b>&nbsp; AI 에이전트 설계: 탐지, 분석, 추천",
-            "<b>3</b>&nbsp; 운영 흐름",
-            "<b>4</b>&nbsp; 재현 가능한 설명: 판단 기준, 산출식, 추천 로직"])}</div>
-</div>''')
+page("04 빅콘 · DECISION", "사회적 고립 예방 · 대응 AI 에이전트", two(
+    '<p class="label red">DECISION · 9/20</p>'
+    '<p style="font-size:16pt; margin-top:6pt;">빅콘테스트 AI데이터활용 분야<br>SK텔레콤 유동인구 × 신한카드 결제</p>'
+    '<p class="small" style="margin-top:12pt;">주제와 타겟을 먼저 정하지 않고, <b>EDA 결과를 보고 결정</b>하기로 했다.</p>'
+    '<p class="cap" style="margin-top:8pt;">1차 서류 평가는 아이디어 창의성과 데이터 근거가 각 25점</p>',
+    '<p class="label">에이전트 흐름 초안</p>'
+    + bullets(["위험 신호 탐지", "위험 요인 분석", "복지자원 검색", "맞춤형 개입안 제안", "담당자 검토 · 사후 모니터링"], pad=5),
+    ratio="1.2fr 1fr"))
 
-page(10, "01 탐색 · WHY", "사회적 고립은 왜 먼저 찾아야 하나", f'''
+page("04 빅콘 · WHY", "사회적 고립은 왜 먼저 찾아야 하나", f'''
 <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20pt;">
   {stat("13.6", "%", "서울 1인가구 중 도움을 청할 사람이 한 명도 없는 비율")}
   {stat("1.29", "배", "사회적 고립의 사망 위험. 외로움 1.26배, 독거 1.32배")}
   {stat("26.6", "%", "고독사 최초 발견자가 가족인 경우")}
 </div>
-<p style="font-size:16pt; margin-top:24pt;">고립은 스스로 드러나지 않는다. 신호를 기다리지 말고 <b>먼저 찾아야</b> 한다.</p>
-<p class="cap" style="margin-top:6pt;">박민진·김성아(2022), Holt-Lunstad et al.(2015), 보건복지부 고독사 실태조사</p>''',
+<p style="font-size:16pt; margin-top:22pt;">고독은 감정, 고립은 상태. 고립은 스스로 드러나지 않으니 <b>먼저 찾아야</b> 한다.</p>
+<p class="cap" style="margin-top:6pt;">박민진 · 김성아(2022), Holt-Lunstad et al.(2015), 보건복지부 고독사 실태조사</p>''',
      sub="도움이 필요할 때 기댈 사람이 없는 상태 (통계청 사회적 고립도)")
 
-# ---------- 02 데이터 이해 ----------
-divider(11, "02", "데이터 이해", "강남과 춘천, 그리고 집계구", "WEEK 3 ~ 5")
-
-page(12, "02 데이터 이해 · DATA", "무엇으로 고립을 볼 것인가", table(
+page("04 빅콘 · DATA", "무엇으로 고립을 볼 것인가", table(
     ["구분", "데이터", "기관", "쓰임"],
-    [["대회 제공", "이동전화 유동인구 (성·연령·시간대·요일)", "SK텔레콤", "활동 신호"],
-     ["대회 제공", "카드 결제·이용고객 (주제2)", "신한카드", "소비 맥락"],
+    [["대회 제공", "이동전화 유동인구 (성 · 연령 · 시간대 · 요일)", "SK텔레콤", "활동 신호"],
+     ["대회 제공", "카드 결제 · 이용고객 (주제2)", "신한카드", "소비 맥락"],
      ["외부", "SGIS 집계구 통계 297개 항목", "통계청", "지역 노출"],
-     ["외부", "시민생활 데이터 (관심집단·통신정보)", "서울시", "외부 검증"],
-     ["외부", "고립·은둔 청년 실태조사, 노인실태조사", "복지부·서울시", "고립 특징"],
-     ["외부", "복지·공공기관 17,925곳, 지원사업 60건", "공공데이터포털 등", "추천"]],
+     ["외부", "시민생활 데이터 (관심집단 · 통신정보)", "서울시", "외부 검증"],
+     ["외부", "고립 · 은둔 청년 실태조사, 노인실태조사", "복지부 · 서울시", "고립 특징"],
+     ["외부", "복지 · 공공기관 17,925곳, 지원사업 60건", "공공데이터포털 등", "추천"]],
     ["14%", "44%", "22%", "20%"]))
 
-page(13, "02 데이터 이해 · WEEK 3", "왜 강남과 춘천만 줬을까", f'''
+page("04 빅콘 · VERIFY", "명세서를 믿지 않고 원본 20개를 다 열었다", table(
+    ["발견", "내용", "영향"],
+    [["12월 파일 중복", "시간대 · 요일 테이블 12월 레코드가 정확히 2배", "모르고 쓰면 12월 수치 2배"],
+     ["비식별 하한 컷", "카드 결제건수 5건 미만 셀 삭제", "고령층 · 춘천 등 희소 집단이 체계적으로 누락"],
+     ["업종 금액 편중", "결제금액 50.7%가 미분류 · 세금공과금", "금액 지표에서 두 업종 제외"],
+     ["양자화 단위", "SK 값이 0.0254 단위로 양자화", "양수 셀 약 2,100만 개가 이 규칙"],
+     ["강남 유입", "유동인구가 거주인구의 최대 53.9배", "SK만으로 강남 주민 고립 측정은 어려움"]],
+    ["18%", "46%", "36%"]),
+    sub="데이터가 찾으려는 대상을 먼저 지울 수 있다")
+
+page("04 빅콘 · INDEX v0", "지표를 합치기 전에, 같은 걸 재는지부터", two(
+    '<p class="label red">김태은 · 지표 재설계</p>'
+    '<div style="display:flex; align-items:baseline; gap:14pt; margin-top:6pt;">'
+    '<p class="num" style="font-size:40pt;">-4.219</p><p class="muted">에서</p>'
+    '<p class="num red" style="font-size:40pt;">0.720</p></div>'
+    '<p class="small" style="margin-top:6pt;">서울연구원 4축을 빌린 1차 지수는 Cronbach α가 음수. 지표들이 고립이 아니라 <b>구매력</b>을 재고 있었다. 정의, 예측, 검증 순서로 다시 설계했다.</p>',
+    '<p class="label red">이정연 · 재현 검증</p>'
+    '<div style="display:flex; align-items:baseline; gap:14pt; margin-top:6pt;">'
+    '<p class="num" style="font-size:40pt;">0.185</p><p class="muted">vs</p>'
+    '<p class="num red" style="font-size:40pt;">0.589</p></div>'
+    '<p class="small" style="margin-top:6pt;">같은 지수를 보고서만 보고 재현했더니 α가 달랐다. 원인은 <b>주말비 변수의 부호 하나</b>. 가정을 문서로 맞추는 게 코드보다 먼저였다.</p>'))
+
+page("04 빅콘 · WHERE", "왜 강남과 춘천만 줬을까", f'''
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:32pt;">
-  <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">Gangnam</p>
-  <p class="muted">대도시 · 1인가구 · 직장 밀집 · 3.4 km</p></div>
-  <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">Chuncheon</p>
-  <p class="muted">중소도시 · 고령화 · 넓은 외곽 · 15.4 km</p></div>
+  <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">강남구</p>
+  <p class="muted">대도시 · 1인가구 · 직장 밀집 · 데이터의 15.5%</p></div>
+  <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">춘천시</p>
+  <p class="muted">중소도시 · 고령화 · 넓은 외곽 · 데이터의 84.5%</p></div>
 </div>
 <p style="font-size:18pt; margin-top:24pt;">정반대인 두 지역에서 <b>모두 통하는 지표</b>를 만들면 된다.</p>
-<p class="cap" style="margin-top:8pt;">EDA 중 춘천 일부 성·연령 집단에서 유동인구와 카드 결제가 함께 줄어든 것을 보고, 지역을 넓히기보다 두 지역을 깊게 보기로 했다.</p>''')
+<p class="cap" style="margin-top:8pt;">강남은 외지 유입이 커서 주민 신호가 희석된다는 점도 데이터를 열어본 뒤에야 알았다.</p>''')
 
-page(14, "02 데이터 이해 · WEEK 4", "분석 단위를 집계구로 맞췄다", f'''
+page("04 빅콘 · UNIT", "분석 단위를 집계구로 맞췄다", f'''
 <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;">
   {stat("1,698", "", "분석 대상 집계구 (강남 + 춘천)", 32)}
   {stat("297", "", "SGIS 집계구 통계 항목", 32)}
   {stat("184", "", "분석에 쓸 항목만 남긴 결과", 32)}
-  {stat("6", "", "최종 위험 요인 지표", 32)}
+  {stat("0.1", "명", "50m 격자 유동 중앙값. 격자 그대로는 노이즈", 32)}
 </div>
-<p class="small" style="margin-top:22pt;">인구 71 · 가구 8 · 주택 36 · 사업체 182개 항목을 집계구 마스터 테이블 하나로 결합하고, 결측과 no_record 처리 규칙을 팀 공통으로 정했다.</p>''')
+<p class="small" style="margin-top:20pt;">코드 앞자리를 잘라 묶던 방식을 실제 경계 공간조인으로 바꾸고, 합계와 평균 · 결측 처리 규칙을 집계구 마스터 테이블 하나로 맞췄다.</p>''')
 
-page(15, "02 데이터 이해 · WEEK 5", "일하는 방식을 먼저 정했다", cols([
-    ("ISSUE", "이슈로 쪼갠다", "작업 단위마다 이슈를 열고 담당자와 산출물, 드라이브 위치까지 본문에 적었다"),
-    ("BRANCH", "봇이 브랜치를 판다", "이슈 헬퍼가 붙여 준 이름으로 브랜치를 만들고 설계 문서부터 썼다"),
-    ("PR", "PR로 합친다", "CI에서 실데이터 테스트를 분리하고 squash 머지로 이력을 정리했다"),
+page("04 빅콘 · WORKFLOW", "일하는 방식을 먼저 정했다", cols([
+    ("ISSUE", "이슈로 쪼갠다", "작업마다 이슈를 열고 담당자, 산출물, 드라이브 위치까지 본문에 적었다"),
+    ("BRANCH", "설계 문서부터", "이슈 헬퍼가 붙여 준 브랜치에서 설계 문서를 먼저 쓰고 시작했다"),
+    ("CI", "테스트를 분리", "실데이터 없는 CI에서 깨지던 테스트를 pytest 마커로 분리했다"),
     ("WIKI", "근거는 위키로", "고립 연구와 조례 자료를 레포 위키로 공유했다"),
-], gap=16), sub="10/8 주최 측 주제설명자료가 갱신되며 탐지부터 복지자원 추천까지가 요구사항이 됐다")
+], gap=14), sub="10/8 주제설명자료가 갱신되며 탐지부터 복지자원 추천까지가 요구사항이 됐다")
 
-# ---------- 03 분석 ----------
-divider(16, "03", "분석", "두 개의 신호와 하나의 사전", "WEEK 6")
+# ================= 05 빅콘 분석·제출 =================
+divider("05", "빅콘테스트 · 분석과 제출", "두 개의 신호와 하나의 에이전트", "WEEK 7 ~ 8")
 
-page(17, "03 분석 · WHY 집계구", "동 평균은 동네 안의 차이를 가린다", f'''
+page("05 분석 · WHY 집계구", "동 평균은 동네 안의 차이를 가린다", f'''
 <div style="display:grid; grid-template-columns:1fr 1.15fr; gap:24pt; align-items:center;">
   <img src="./assets/map_yeoksam.png" alt="역삼2동 집계구별 1인가구 비율 지도" style="width:100%; height:236pt;">
   <div><p class="label red">역삼2동 1인가구 비율</p>
@@ -254,7 +383,7 @@ page(17, "03 분석 · WHY 집계구", "동 평균은 동네 안의 차이를 �
             "그래서 통계청이 공표하는 가장 작은 단위, <b>집계구</b>로 본다"])}</div>
 </div>''')
 
-page(18, "03 분석 · STRUCTURE", "두 개의 신호를 교차한다", cols([
+page("05 분석 · STRUCTURE", "두 개의 신호를 교차한다", cols([
     ("STEP 1 · 어디가 위험한가", "고립 위험 지수", "SGIS 지표로 지역의 노출을 점수화. 관찰 후보 477곳"),
     ("STEP 2 · 누가 줄었나", "활동 저하 신호", "기대보다 유동이 적은 상태가 반복되는 곳. 60대 이상 461곳"),
     ("DICTIONARY", "위험 특징 사전", "실태조사 근거로 대화에서 확인할 24개 특징"),
@@ -264,21 +393,21 @@ page(18, "03 분석 · STRUCTURE", "두 개의 신호를 교차한다", cols([
 <p style="color:#FFFFFF; font-size:16pt; font-weight:700;">지역 유형 × 개인 티어로 관찰하고 연결하는 AI 에이전트</p>
 <p class="cap" style="color:#BBBBBB;">재언 · 정연 · 태은</p></div>''')
 
-page(19, "03 분석 · STEP 1", "고립 위험 지수: 두 테마, 여섯 지표", f'''
+page("05 분석 · STEP 1", "고립 위험 지수: 두 테마, 여섯 지표", f'''
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
   <div><p class="label red">THEME A · 고령 + 독거</p>
-  {bullets(["독거·연령: 1인가구율 × 50세 이상 비율",
+  {bullets(["독거 · 연령: 1인가구율 × 50세 이상 비율",
             "노후주거: 1989년 이전 주택 × 비아파트 비율",
             "고령 비중: 65세 이상 비율"], pad=5)}</div>
   <div><p class="label red">THEME B · 중장년 독거 + 주거취약</p>
-  {bullets(["남성·독거: 50~64세 남성 × 1인가구율",
-            "비주택·연령: 고시원 등 거처 × 50세 이상",
-            "소형·비주거: 비주거용 건물 내 주택, 20㎡ 이하"], pad=5)}</div>
+  {bullets(["남성 · 독거: 50~64세 남성 × 1인가구율",
+            "비주택 · 연령: 고시원 등 거처 × 50세 이상",
+            "소형 · 비주거: 비주거용 건물 내 주택, 20㎡ 이하"], pad=5)}</div>
 </div>
 <p class="small" style="margin-top:18pt;">테마별 표준화 점수를 백분위로 바꾸고, 종합 점수 = (A 백분위 + B 백분위) ÷ 2 를 1~5등급으로 나눴다.</p>
 <p class="cap" style="margin-top:4pt;">참고: America's Health Rankings Senior Report, CDC SVI, OECD 합성지수 지침, 복지부 중장년 남성 고독사 위험</p>''')
 
-page(20, "03 분석 · STEP 1", "두 테마의 상위 지역은 절반만 겹친다", f'''
+page("05 분석 · STEP 1", "두 테마의 상위 지역은 절반만 겹친다", f'''
 <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:24pt; align-items:center;">
   <img src="./assets/map_theme.png" alt="테마 A, B 상위 집계구 지도" style="width:100%; height:240pt;">
   <div>
@@ -290,7 +419,7 @@ page(20, "03 분석 · STEP 1", "두 테마의 상위 지역은 절반만 겹친
   <p class="cap">1,698개 집계구 중 관찰 후보</p></div>
 </div>''')
 
-page(21, "03 분석 · STEP 2", "기대보다 덜 움직이는 동네를 찾는다", f'''
+page("05 분석 · STEP 2", "기대보다 덜 움직이는 동네를 찾는다", f'''
 <div style="display:grid; grid-template-columns:1.25fr 1fr; gap:24pt; align-items:center;">
   <div><img src="./assets/chart_residual.png" alt="예시 집계구의 실제 대비 기대 유동 비율" style="width:100%; height:150pt;">
   <p class="cap" style="margin-top:6pt;">예시 집계구: 7·9·10·11월이 판정선 미만, 평균 로그 잔차 -0.108</p></div>
@@ -303,10 +432,10 @@ page(21, "03 분석 · STEP 2", "기대보다 덜 움직이는 동네를 찾는�
   <p class="cap">60대 이상 활동 저하 신호 집계구</p></div>
 </div>''')
 
-page(22, "03 분석 · VALIDATION", "만든 지표가 현실과 맞는가", f'''
+page("05 분석 · VALIDATION", "만든 지표가 현실과 맞는가", f'''
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
   <div><p class="label red">SGIS 지수 vs 서울시 관심집단 비율</p>
-  {table(["지표", "순위상관 ρ"], [["테마 A 고령·독거", "+0.680"], ["테마 B 중장년·주거취약", "+0.633"], ["종합 점수", "+0.639"]], ["65%", "35%"])}
+  {table(["지표", "순위상관 ρ"], [["테마 A 고령 · 독거", "+0.680"], ["테마 B 중장년 · 주거취약", "+0.633"], ["종합 점수", "+0.639"]], ["65%", "35%"])}
   <p class="cap" style="margin-top:6pt;">강남 22개 동 전체, 9개 대조 모두 양의 상관</p></div>
   <div><p class="label red">활동 신호율 vs 60대 이상 1인가구 통신정보</p>
   {table(["행동 지표", "평일 ρ", "휴일 ρ"], [["집 체류시간", "+0.509", "+0.438"], ["이동 횟수", "-0.601", "-0.493"]], ["50%", "25%", "25%"])}
@@ -314,7 +443,7 @@ page(22, "03 분석 · VALIDATION", "만든 지표가 현실과 맞는가", f'''
 </div>
 <p class="small" style="margin-top:16pt;">20~30대는 같은 방식이 맞지 않아 신호로 쓰지 않았다. 안 되는 것을 확인한 것도 결과였다.</p>''')
 
-page(23, "03 분석 · RESULT", "두 신호를 교차해 다섯 유형으로", f'''
+page("05 분석 · RESULT", "두 신호를 교차해 다섯 유형으로", f'''
 <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:22pt; align-items:center;">
   <img src="./assets/map_type.png" alt="지역 유형 분류 지도" style="width:100%; height:240pt;">
   <div>{table(["유형", "강남", "춘천", "합계"],
@@ -326,13 +455,13 @@ page(23, "03 분석 · RESULT", "두 신호를 교차해 다섯 유형으로", f
   <p class="cap" style="margin-top:8pt;">집중관찰 = 지수 관찰 후보이면서 활동 신호도 나타난 곳. 판단이 보류된 곳은 지우지 않고 확인필요로 남겼다.</p></div>
 </div>''')
 
-page(24, "03 분석 · DICTIONARY", "대화로 확인할 24개 위험 특징", f'''
+page("05 분석 · DICTIONARY", "대화로 확인할 24개 위험 특징", f'''
 <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:28pt;">
   <div>{table(["범주", "특징 수", "대표 특징"],
               [["MIND 정신건강", "5", "우울 PHQ-9 10점 이상"],
-               ["OUT 외출·활동", "2", "은둔·고립 1년 이상"],
+               ["OUT 외출 · 활동", "2", "은둔 · 고립 1년 이상"],
                ["SOLO 독거", "2", "혼자 생활, 혼자 식사"],
-               ["BODY 신체·일상", "5", "생활공간 관리 어려움"],
+               ["BODY 신체 · 일상", "5", "생활공간 관리 어려움"],
                ["REL 관계 단절", "7", "속마음 털어놓을 사람 없음"],
                ["ECON 경제", "2", "소득 활동 없음"],
                ["HOUSE 주거", "1", "고시원, 보증금 없는 월세"]], ["38%", "17%", "45%"])}</div>
@@ -341,20 +470,17 @@ page(24, "03 분석 · DICTIONARY", "대화로 확인할 24개 위험 특징", f
             "서울시 조사로 전체 청년보다 높은지 확인",
             "고립 판정에 쓴 문항은 근거에서 제외",
             "점수 없이 해당 여부만 본다"], pad=5)}
-  <p class="cap" style="margin-top:8pt;">근거: 복지부·서울시 고립·은둔 청년 실태조사, 노인실태조사, 고독사 예방 기본계획</p></div>
+  <p class="cap" style="margin-top:8pt;">근거: 복지부 · 서울시 고립 · 은둔 청년 실태조사, 노인실태조사, 고독사 예방 기본계획</p></div>
 </div>''')
 
-# ---------- 04 에이전트·제출 ----------
-divider(25, "04", "에이전트·제출", "결과를 서비스 흐름으로", "WEEK 7")
-
-page(26, "04 에이전트 · LOGIC", "관찰하고, 판단하고, 연결한다", cols([
+page("05 에이전트 · LOGIC", "관찰하고, 판단하고, 연결한다", cols([
     ("1 OBSERVE", "관찰", "지역 유형으로 관찰 주기를 정하고 사용자의 변화를 계속 기록"),
     ("2 JUDGE", "판단", "대화 응답을 24개 특징에 매핑, 해당 범주 수로 티어 1~3"),
     ("3 CONNECT", "추천", "특징 × 기관 태그 44개 연결로 기관 17,925곳, 지원사업 60건 추천"),
     ("4 FOLLOW", "후속", "이용 결과를 확인하고 재분류. 공백은 지자체에 보고"),
 ], gap=16) + '''
 <div style="margin-top:18pt; display:grid; grid-template-columns:1fr 1fr; gap:20pt;">
-  <div class="redtop" style="padding-top:8pt;"><p class="small"><b class="red">위기는 사람이</b>&nbsp; 최근 2주 내 자살·자해 생각이나 시도가 나오면 티어 계산 없이 109와 지정 담당자에게 즉시 연결</p></div>
+  <div class="redtop" style="padding-top:8pt;"><p class="small"><b class="red">위기는 사람이</b>&nbsp; 최근 2주 내 자살 · 자해 생각이나 시도가 나오면 티어 계산 없이 109와 지정 담당자에게 즉시 연결</p></div>
   <div class="hair" style="padding-top:8pt;"><p class="small"><b>개인을 판정하지 않는다</b>&nbsp; 지역 결과는 관찰 빈도만 바꾸고 개인 티어는 올리지 않는다</p></div>
 </div>''')
 
@@ -367,7 +493,7 @@ fl = ''.join(
     f'<div class="{"redtop" if i == 3 else "dark"}" style="padding-top:8pt;">'
     f'<p class="label {"red" if i == 3 else ""}">{a}</p><p class="small" style="margin-top:6pt;">"{b}"</p>'
     f'<p class="cap" style="margin-top:6pt;">{c}</p></div>' for i, (a, b, c) in enumerate(flow))
-page(27, "04 에이전트 · SCENARIO", "29세, 역삼1동, 1인가구",
+page("05 에이전트 · SCENARIO", "29세, 역삼1동, 1인가구",
      f'<div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12pt;">{fl}</div>'
      '<p class="cap" style="margin-top:20pt;">합성 페르소나 예시. 퇴사 후 1년 넘게 집에 있고, 생활비가 걱정이고, 속마음을 말할 사람이 없다.</p>',
      sub="한 사람의 사이클로 본 에이전트")
@@ -383,69 +509,82 @@ t = ''.join(
     f'<p class="num {"red" if i == 5 else ""}" style="font-size:22pt;">{d}</p>'
     f'<h3 style="font-size:14pt; margin-top:4pt;">{h}</h3><p class="cap" style="margin-top:4pt;">{b}</p></div>'
     for i, (d, h, b) in enumerate(tl))
-page(28, "04 제출 · WEEK 7", "마지막 일주일",
+page("05 제출 · WEEK 8", "마지막 일주일",
      f'<div style="display:grid; grid-template-columns:repeat(6,1fr); gap:10pt;">{t}</div>',
      sub="흩어진 이슈를 하나의 흐름으로 묶은 일주일")
 
-page(29, "04 제출 · OUTPUT", "집계구 기반 사회적 고립 조기 탐지 및 지속 관리", f'''
+page("05 제출 · OUTPUT", "집계구 기반 사회적 고립 조기 탐지 및 지속 관리", f'''
 <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20pt;">
   {stat("23", "쪽", "결과보고서 (문제 정의, 분석 방법, 결과, 에이전트, 기대효과)", 40)}
   {stat("11", "편", "참고문헌", 40)}
   {stat("7", "종", "사용 데이터 (대회 제공 2 + 외부 5)", 40)}
 </div>
 <p style="font-size:16pt; margin-top:22pt;">지역의 신호를 복지 지원으로 연결하는 AI 에이전트</p>
-<p class="cap" style="margin-top:4pt;">발표자료 PDF, 코드·README·LLM 활용 문서를 담은 zip으로 제출</p>''')
+<p class="cap" style="margin-top:4pt;">발표자료 PDF, 코드 · README · LLM 활용 문서를 담은 zip으로 제출</p>''')
 
-# ---------- 05 회고 ----------
-divider(30, "05", "회고", "숫자와 배운 점", "RETRO")
+# ================= 06 회고 =================
+divider("06", "회고", "숫자와 배운 점", "RETRO")
 
-page(31, "05 회고 · NUMBERS", "숫자로 본 7주", f'''
+page("06 회고 · NUMBERS", "숫자로 본 8주", f'''
 <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;">
-  {stat("7", "주", "9/10 ~ 10/26")}
-  {stat("3", "개", "검토한 대회")}
-  {stat("21", "개", "GitHub 이슈")}
-  {stat("229", "개", "커밋")}
+  {stat("8", "주", "심화세션")}
+  {stat("3", "개", "참가한 공모전")}
+  {stat("24", "건", "비자부기에서 구조화한 공고 · 서식")}
+  {stat("229", "개", "빅콘 레포 커밋")}
 </div>
 <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt; margin-top:18pt;">
-  {stat("1,698", "", "집계구")}
-  {stat("17,925", "", "복지·공공기관")}
-  {stat("24", "개", "위험 특징")}
-  {stat("1", "번", "제출")}
+  {stat("20", "개", "전수 검증한 제공 데이터 파일")}
+  {stat("1,698", "", "분석한 집계구")}
+  {stat("17,925", "", "연결한 복지 · 공공기관")}
+  {stat("21", "개", "빅콘 GitHub 이슈")}
 </div>''')
 
-page(32, "05 회고 · LESSONS", "잘한 것과 아쉬운 것", f'''
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
-  <div><p class="label red">KEEP</p>
-  {bullets(["이슈 단위로 쪼개 셋이 병렬로 움직였다",
-            "결정과 근거를 이슈 코멘트와 문서에 남겼다",
-            "Claude Code·Codex로 탐색과 문서 작업 속도를 냈다",
-            "TODO 팀원 의견"], pad=6)}</div>
-  <div><p class="label">PROBLEM</p>
-  {bullets(["주제를 정하기까지 2주가 걸렸다",
-            "지수 버전이 바뀔 때마다 하류 작업을 다시 돌렸다",
-            "에이전트는 설계까지만, 실제 구동은 못 했다",
-            "TODO 팀원 의견"], pad=6)}</div>
+page("06 회고 · LEARNED", "8주 동안 배운 네 가지", f'''
+<div style="display:grid; grid-template-columns:1fr 1fr; column-gap:28pt; row-gap:16pt;">
+  <div class="dark" style="padding-top:8pt;"><h3>문서와 원본은 다르다</h3>
+  <p class="small" style="margin-top:4pt;">PDF 변환본은 숫자를 잃었고, 데이터 명세서는 12월 중복을 말해 주지 않았다.</p></div>
+  <div class="dark" style="padding-top:8pt;"><h3>작은 가정 하나가 결론을 바꾼다</h3>
+  <p class="small" style="margin-top:4pt;">α 0.185와 0.589의 차이는 변수 부호 하나였다. 가정을 먼저 문서로 맞춘다.</p></div>
+  <div class="dark" style="padding-top:8pt;"><h3>근거와 안전한 실패가 먼저다</h3>
+  <p class="small" style="margin-top:4pt;">RAG의 품질은 생성이 아니라 검색과 검증에서 갈렸다.</p></div>
+  <div class="dark" style="padding-top:8pt;"><h3>점수는 판정이 아니라 우선순위</h3>
+  <p class="small" style="margin-top:4pt;">우리 데이터로 볼 수 있는 건 고립의 간접 신호뿐. "먼저 확인할 지역"으로 말한다.</p></div>
 </div>''')
+
+page("06 회고 · KPT", "계속할 것과 아쉬웠던 것", f'''
+<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:22pt;">
+  <div><p class="label red">KEEP</p>
+  {bullets(["원본을 전수 확인하고, 팀원 결과도 직접 재현하기",
+            "정정한 사실은 테스트로 고정하기",
+            "결론을 확정과 잠정으로 나눠 공유하기"], pad=6)}</div>
+  <div><p class="label">PROBLEM</p>
+  {bullets(["검증에 시간이 쏠려 에이전트 설계가 늦었다",
+            "작업이 큰 PR 하나로 몰려 리뷰가 부담됐다",
+            "비슷한 두 데이터의 출처를 헷갈린 적이 있다"], pad=6)}</div>
+  <div><p class="label red">TRY</p>
+  {bullets(["재현 전에 원 코드와 단위 · 부호 · 필터부터 맞추기",
+            "수치를 인용할 때 출처 데이터를 함께 적기",
+            "작업은 작은 PR로 나눠 올리기"], pad=6)}</div>
+</div>''', sub="김태은 · 이정연 주차 보고서에서")
 
 photos = ''.join(
     f'<div style="height:150pt; border:1pt solid #BBBBBB;" data-image-placeholder="{c}"><p class="cap" style="padding:6pt;">{c}</p></div>'
     for c in ["활동 사진 1", "활동 사진 2", "활동 사진 3", "활동 사진 4"])
-page(33, "05 회고 · TOGETHER", "함께한 7주",
+page("06 회고 · TOGETHER", "함께한 8주",
      f'<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12pt;">{photos}</div>'
      '<p class="cap" style="margin-top:14pt;">함께 작업하던 날들</p>')
 
-S[34] = HEAD + f'''<body style="justify-content:space-between;">{strip("CLOSING", 34)}
+raw(f'''<body style="justify-content:space-between;">{strip("CLOSING")}
 <div><h1 style="font-size:52pt;">감사합니다</h1><div class="rule" style="margin:14pt 0;"></div>
 <p class="num" style="font-size:20pt;">Team Hambugi</p>
 <p class="cap" style="margin-top:4pt;">김태은 · 이정연 · 진재언</p></div>
-<div style="height:8pt; background:#1A1A1A;"></div></body></html>'''
+<div style="height:8pt; background:#1A1A1A;"></div></body></html>''')
 
 TOTAL = len(S)
-assert sorted(S) == list(range(1, TOTAL + 1)), "슬라이드 번호 누락"
 BANNED = re.compile("[—–−―→]")  # 긴 하이픈, en dash, 마이너스, 화살표
 for f in OUT.glob("slide-*.html"):
     f.unlink()
-for n, html in S.items():
+for n, html in enumerate(S, start=1):
     html = html.replace("{TOTAL}", str(TOTAL))
     assert not BANNED.search(html), f"slide {n}: 금지 문자 {BANNED.findall(html)}"
     (OUT / f"slide-{n:02d}.html").write_text(html, encoding="utf-8")
