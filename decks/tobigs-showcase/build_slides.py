@@ -607,8 +607,8 @@ page("06 회고 · KPT", "계속할 것과 아쉬웠던 것", f'''
 </div>''', sub="세 명의 주차 보고서에서")
 
 photos = ''.join(
-    f'<div style="height:150pt; border:1pt solid #BBBBBB;" data-image-placeholder="{c}"><p class="cap" style="padding:6pt;">{c}</p></div>'
-    for c in ["활동 사진 1", "활동 사진 2", "활동 사진 3", "활동 사진 4"])
+    f'<img src="./assets/photos/photo-{i}.png" alt="팀 활동 사진 {i}" style="width:100%; height:114pt; object-fit:cover;">'
+    for i in range(1, 5))
 page("06 회고 · TOGETHER", "함께한 8주",
      f'<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12pt;">{photos}</div>'
      '<p class="cap" style="margin-top:14pt;">함께 작업하던 날들</p>')
