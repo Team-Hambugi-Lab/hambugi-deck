@@ -11,22 +11,22 @@ HEAD = """<!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; overflow-wrap: break-word; }
 body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
   font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
 .label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
 .num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
 .rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
-h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
-h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
-h3 { font-size: 16pt; font-weight: 700; line-height: 1.4; }
-p, li { font-size: 14pt; line-height: 1.55; }
+h1 { font-size: 24pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; text-wrap: balance; }
+h2 { font-size: 18pt; font-weight: 700; line-height: 1.4; }
+h3 { font-size: 14pt; font-weight: 700; line-height: 1.4; text-wrap: balance; }
+p, li { font-size: 12pt; line-height: 1.6; text-wrap: pretty; }
 b { font-weight: 700; }
 .muted { color: #888888; }
 .red { color: #1F3A6E; }
-.cap { font-size: 12pt; color: #888888; line-height: 1.5; }
-.small { font-size: 12pt; line-height: 1.5; }
+.cap { font-size: 10pt; color: #888888; line-height: 1.5; }
+.small { font-size: 11pt; line-height: 1.5; }
 ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
@@ -36,7 +36,7 @@ ul { list-style: none; }
 body { position: relative; }
 img { display: block; object-fit: contain; }
 table { border-collapse: collapse; width: 100%; }
-td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+td, th { font-size: 11pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
@@ -58,7 +58,7 @@ def raw(html):
 
 def page(label, title, body, sub=""):
     """일반 콘텐츠 슬라이드."""
-    sub_html = f'<p class="muted" style="font-size:14pt; margin-top:4pt;">{sub}</p>' if sub else ""
+    sub_html = f'<p class="muted" style="font-size:12pt; margin-top:4pt;">{sub}</p>' if sub else ""
     raw(f'<body>{strip(label)}'
         f'<div style="margin-top:14pt;"><h1>{title}</h1>{sub_html}<div class="rule"></div></div>'
         f'<div style="flex:1; display:flex; flex-direction:column; justify-content:center;">'
@@ -72,7 +72,7 @@ def divider(num, title, sub, weeks):
   <p class="num" style="font-size:120pt; line-height:1.4;">{num}</p>
   <div style="padding-bottom:22pt;"><p class="label red">{weeks}</p>
   <h1 style="font-size:40pt; margin-top:6pt;">{title}</h1>
-  <p class="muted" style="font-size:16pt; margin-top:6pt;">{sub}</p></div>
+  <p class="muted" style="font-size:14pt; margin-top:6pt;">{sub}</p></div>
 </div>
 <div style="height:8pt; background:#1F3A6E;"></div></body></html>''')
 
@@ -90,7 +90,7 @@ def cols(items, gap=20, top="dark"):
 def stat(value, unit, cap, size=40):
     """큰 숫자 + 캡션."""
     return (f'<div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:{size}pt;">'
-            f'{value}<span style="font-size:16pt;">{unit}</span></p><p class="cap">{cap}</p></div>')
+            f'{value}<span style="font-size:14pt;">{unit}</span></p><p class="cap">{cap}</p></div>')
 
 
 def table(head, rows, widths=None):
@@ -130,7 +130,7 @@ raw('''<body style="justify-content:space-between;">
 <div><h1 style="font-size:52pt;">투빅스 심화세션 발표회</h1>
 <p class="num red" style="font-size:24pt; margin-top:6pt;">Team Hambugi</p>
 <div class="rule" style="margin:14pt 0;"></div>
-<p style="font-size:16pt;">데이터 엔지니어링을 배우고, 바로 공모전에 써 본 기록</p></div>
+<p style="font-size:14pt;">데이터 엔지니어링을 배우고, 바로 공모전에 써 본 기록</p></div>
 <div class="strip hair" style="padding-top:10pt;"><p class="cap">김태은 · 이정연 · 진재언</p>
 <p class="cap">01 / {TOTAL}</p></div></body></html>''')
 
@@ -148,8 +148,8 @@ toc = [("01", "데이터 엔지니어링 학습", "개념부터 나눠서 발표
        ("06", "회고", "숫자와 배운 점", "")]
 rows = ''.join(
     f'<div class="hair" style="display:grid; grid-template-columns:44pt 1.3fr 1.3fr 64pt; '
-    f'align-items:baseline; padding:5pt 0;"><p class="num red" style="font-size:18pt;">{a}</p>'
-    f'<h3 style="font-size:15pt;">{b}</h3><p class="muted small">{c}</p><p class="cap" style="text-align:right;">{d}</p></div>'
+    f'align-items:baseline; padding:5pt 0;"><p class="num red" style="font-size:16pt;">{a}</p>'
+    f'<h3 style="font-size:13pt;">{b}</h3><p class="muted small">{c}</p><p class="cap" style="text-align:right;">{d}</p></div>'
     for a, b, c, d in toc)
 page("CONTENTS", "목차", rows)
 
@@ -202,7 +202,7 @@ page("01 DE 학습 · APPLY", "배운 개념이 바로 공모전에 쓰였다", 
 divider("02", "ICT 공모전 · 비자부기", "공공 문서를 서비스 데이터로", "WEEK 2 ~ 3")
 
 page("02 비자부기 · WHAT", "충북 외국인 주민을 위한 다국어 AI 행정지원", two(
-    '<p style="font-size:16pt;">비자 요건, 제출서류, 공고 일정, 지원기관을<br><b>한곳에서</b> 확인하는 서비스</p>'
+    '<p style="font-size:14pt;">비자 요건, 제출서류, 공고 일정, 지원기관을<br><b>한곳에서</b> 확인하는 서비스</p>'
     '<p class="cap" style="margin-top:10pt;">제13회 전국 ICT융합 공모전 · 디지털 시제품 부문 · 2026.08.28 제출</p>'
     '<div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12pt; margin-top:16pt;">'
     + stat("24", "건", "분석한 공식 공고 · 지침 · 서식", 36) + stat("4", "종", "지원 비자 F-2-R · E-7-4R · F-4-R · D-2", 36) + '</div>',
@@ -302,7 +302,7 @@ page("03 미래에셋 · BUILD", "금융 AI 서비스의 전체 흐름을 직접
     ("라우팅", "질문 유형 분류"),
     ("생성", "근거 기반 답변 생성"),
     ("검증", "인용 번호 · 수치 근거 검증"),
-]) + '<p style="font-size:16pt; margin-top:24pt;">심사 결과를 분석해 보니, 품질은 생성 모델이 아니라 <b>검색과 검증</b>에서 갈렸다.</p>')
+]) + '<p style="font-size:14pt; margin-top:24pt;">심사 결과를 분석해 보니, 품질은 생성 모델이 아니라 <b>검색과 검증</b>에서 갈렸다.</p>')
 
 page("03 미래에셋 · LESSONS", "어디서 틀렸고, 어떻게 고칠까", table(
     ["취약점", "무슨 일이 있었나", "개선 방향"],
@@ -324,7 +324,7 @@ ideas = [("감각부하 기상도", "환승역 시간대별 감각 부하 예측
          ("식품사막", "생활 필수시설 접근 공백"),
          ("독거노인 매칭", "고령 1인가구끼리 연결")]
 grid = ''.join(
-    f'<div class="hair" style="padding:8pt 0;"><h3 style="font-size:14pt;">{a}</h3>'
+    f'<div class="hair" style="padding:8pt 0;"><h3 style="font-size:12pt;">{a}</h3>'
     f'<p class="small muted">{b}</p></div>' for a, b in ideas)
 page("04 빅콘 · EXPLORE", "데이터안심구역과 빅콘을 동시에 뒤졌다",
      f'<div style="display:grid; grid-template-columns:repeat(3,1fr); column-gap:22pt;">{grid}</div>'
@@ -333,7 +333,7 @@ page("04 빅콘 · EXPLORE", "데이터안심구역과 빅콘을 동시에 뒤�
 
 page("04 빅콘 · DECISION", "사회적 고립 예방 · 대응 AI 에이전트", two(
     '<p class="label red">DECISION · 9/20</p>'
-    '<p style="font-size:16pt; margin-top:6pt;">빅콘테스트 AI데이터활용 분야<br>SK텔레콤 유동인구 × 신한카드 결제</p>'
+    '<p style="font-size:14pt; margin-top:6pt;">빅콘테스트 AI데이터활용 분야<br>SK텔레콤 유동인구 × 신한카드 결제</p>'
     '<p class="small" style="margin-top:12pt;">주제와 타겟을 먼저 정하지 않고, <b>EDA 결과를 보고 결정</b>하기로 했다.</p>'
     '<p class="cap" style="margin-top:8pt;">1차 서류 평가는 아이디어 창의성과 데이터 근거가 각 25점</p>',
     '<p class="label">에이전트 흐름 초안</p>'
@@ -346,7 +346,7 @@ page("04 빅콘 · WHY", "사회적 고립은 왜 먼저 찾아야 하나", f'''
   {stat("1.29", "배", "사회적 고립의 사망 위험. 외로움 1.26배, 독거 1.32배")}
   {stat("26.6", "%", "고독사 최초 발견자가 가족인 경우")}
 </div>
-<p style="font-size:16pt; margin-top:22pt;">고독은 감정, 고립은 상태. 고립은 스스로 드러나지 않으니 <b>먼저 찾아야</b> 한다.</p>
+<p style="font-size:14pt; margin-top:22pt;">고독은 감정, 고립은 상태. 고립은 스스로 드러나지 않으니 <b>먼저 찾아야</b> 한다.</p>
 <p class="cap" style="margin-top:6pt;">박민진 · 김성아(2022), Holt-Lunstad et al.(2015), 보건복지부 고독사 실태조사</p>''',
      sub="도움이 필요할 때 기댈 사람이 없는 상태 (통계청 사회적 고립도)")
 
@@ -389,7 +389,7 @@ page("04 빅콘 · WHERE", "왜 강남과 춘천만 줬을까", f'''
   <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">춘천시</p>
   <p class="muted">중소도시 · 고령화 · 넓은 외곽 · 데이터의 84.5%</p></div>
 </div>
-<p style="font-size:18pt; margin-top:24pt;">정반대인 두 지역에서 <b>모두 통하는 지표</b>를 만들면 된다.</p>
+<p style="font-size:16pt; margin-top:24pt;">정반대인 두 지역에서 <b>모두 통하는 지표</b>를 만들면 된다.</p>
 <p class="cap" style="margin-top:8pt;">강남은 외지 유입이 커서 주민 신호가 희석된다는 점도 데이터를 열어본 뒤에야 알았다.</p>''')
 
 page("04 빅콘 · MAP", "춘천은 조용히 바뀌고 있었다", two(
@@ -440,7 +440,7 @@ page("05 분석 · STRUCTURE", "두 개의 신호를 교차한다", cols([
     ("RESOURCE", "기관 태그", "기관 17,925곳을 서비스 태그 16종으로 분류"),
 ], gap=16) + '''
 <div style="margin-top:20pt; background:#1A1A1A; padding:11pt 16pt; display:flex; justify-content:space-between; align-items:center;">
-<p style="color:#FFFFFF; font-size:16pt; font-weight:700;">지역 유형 × 개인 티어로 관찰하고 연결하는 AI 에이전트</p>
+<p style="color:#FFFFFF; font-size:14pt; font-weight:700;">지역 유형 × 개인 티어로 관찰하고 연결하는 AI 에이전트</p>
 <p class="cap" style="color:#BBBBBB;">재언 · 정연 · 태은</p></div>''')
 
 page("05 분석 · STEP 1", "고립 위험 지수: 두 테마, 여섯 지표", f'''
@@ -465,7 +465,7 @@ page("05 분석 · STEP 1", "두 테마의 상위 지역은 절반만 겹친다"
     {stat("159", "", "A만 상위", 28)}{stat("156", "", "중복", 28)}{stat("159", "", "B만 상위", 28)}
   </div>
   <p class="small" style="margin-top:16pt;">종합 등급만 쓰면 한쪽 테마의 높은 노출이 묻힌다. 종합 5등급에 더해 <b>한 테마라도 백분위 80 이상</b>인 곳을 관찰 후보로 넣었다.</p>
-  <p class="num red" style="font-size:28pt; margin-top:10pt;">477<span style="font-size:14pt;"> 곳</span></p>
+  <p class="num red" style="font-size:28pt; margin-top:10pt;">477<span style="font-size:12pt;"> 곳</span></p>
   <p class="cap">1,698개 집계구 중 관찰 후보</p></div>
 </div>''')
 
@@ -478,7 +478,7 @@ page("05 분석 · STEP 2", "기대보다 덜 움직이는 동네를 찾는다",
   {bullets(["6개월 중 <b>4개월 이상</b> 로그 잔차 &lt; -0.1",
             "6개월 평균 로그 잔차 &lt; -0.1",
             "-0.1은 실제 유동이 기대보다 약 9.5% 적다는 뜻"], pad=5)}
-  <p class="num red" style="font-size:28pt; margin-top:8pt;">461<span style="font-size:14pt;"> 곳</span></p>
+  <p class="num red" style="font-size:28pt; margin-top:8pt;">461<span style="font-size:12pt;"> 곳</span></p>
   <p class="cap">60대 이상 활동 저하 신호 집계구</p></div>
 </div>''')
 
@@ -557,7 +557,7 @@ tl = [("10/20", "범주 확정 · 지수 v3", "발표자료 이슈 열고 제목
 t = ''.join(
     f'<div class="{"redtop" if i == 5 else "dark"}" style="padding-top:8pt;">'
     f'<p class="num {"red" if i == 5 else ""}" style="font-size:22pt;">{d}</p>'
-    f'<h3 style="font-size:14pt; margin-top:4pt;">{h}</h3><p class="cap" style="margin-top:4pt;">{b}</p></div>'
+    f'<h3 style="font-size:12pt; margin-top:4pt;">{h}</h3><p class="cap" style="margin-top:4pt;">{b}</p></div>'
     for i, (d, h, b) in enumerate(tl))
 page("05 제출 · WEEK 8", "마지막 일주일",
      f'<div style="display:grid; grid-template-columns:repeat(6,1fr); gap:10pt;">{t}</div>',
@@ -569,7 +569,7 @@ page("05 제출 · OUTPUT", "집계구 기반 사회적 고립 조기 탐지 및
   {stat("11", "편", "참고문헌", 40)}
   {stat("7", "종", "사용 데이터 (대회 제공 2 + 외부 5)", 40)}
 </div>
-<p style="font-size:16pt; margin-top:22pt;">지역의 신호를 복지 지원으로 연결하는 AI 에이전트</p>
+<p style="font-size:14pt; margin-top:22pt;">지역의 신호를 복지 지원으로 연결하는 AI 에이전트</p>
 <p class="cap" style="margin-top:4pt;">발표자료 PDF, 코드 · README · LLM 활용 문서를 담은 zip으로 제출</p>''')
 
 # ================= 06 회고 =================

@@ -4,22 +4,22 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; overflow-wrap: break-word; }
 body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
   font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
 .label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
 .num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
 .rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
-h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
-h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
-h3 { font-size: 16pt; font-weight: 700; line-height: 1.4; }
-p, li { font-size: 14pt; line-height: 1.55; }
+h1 { font-size: 24pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; text-wrap: balance; }
+h2 { font-size: 18pt; font-weight: 700; line-height: 1.4; }
+h3 { font-size: 14pt; font-weight: 700; line-height: 1.4; text-wrap: balance; }
+p, li { font-size: 12pt; line-height: 1.6; text-wrap: pretty; }
 b { font-weight: 700; }
 .muted { color: #888888; }
 .red { color: #1F3A6E; }
-.cap { font-size: 12pt; color: #888888; line-height: 1.5; }
-.small { font-size: 12pt; line-height: 1.5; }
+.cap { font-size: 10pt; color: #888888; line-height: 1.5; }
+.small { font-size: 11pt; line-height: 1.5; }
 ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
@@ -29,8 +29,8 @@ ul { list-style: none; }
 body { position: relative; }
 img { display: block; object-fit: contain; }
 table { border-collapse: collapse; width: 100%; }
-td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+td, th { font-size: 11pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">02 비자부기 · F-2-R</p><p class="label">12 / 51</p></div><div style="margin-top:14pt;"><h1>공고 21건을 서비스 데이터로</h1><p class="muted" style="font-size:14pt; margin-top:4pt;">진재언 · SQLite와 서비스용 CSV 9종</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:1fr 1.3fr; gap:28pt; align-items:start;"><div><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10pt;"><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">21<span style="font-size:16pt;">건</span></p><p class="cap">수집 문서</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">10<span style="font-size:16pt;">개</span></p><p class="cap">공고 차수</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">60<span style="font-size:16pt;">건</span></p><p class="cap">시 · 군별 쿼터</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">67<span style="font-size:16pt;">건</span></p><p class="cap">세부 요건</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">16<span style="font-size:16pt;">건</span></p><p class="cap">AND · OR 그룹</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">45<span style="font-size:16pt;">건</span></p><p class="cap">제출서류</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">6<span style="font-size:16pt;">건</span></p><p class="cap">변경이력</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">3<span style="font-size:16pt;">건</span></p><p class="cap">수동 확인</p></div></div><p class="cap" style="margin-top:8pt;">2025년 8차 ~ 2026년 17차 공고와 붙임자료</p></div><div><ul><li class="hair" style="padding:6pt 0;"><b>보존</b>&nbsp; 원문 위치와 문서별 SHA-256을 남겨 구조화 결과를 원본과 대조</li><li class="hair" style="padding:6pt 0;"><b>정제</b>&nbsp; 지역명 · 금액 · 기간 · 날짜 표기 통일, 원문 오탈자는 원문을 고치지 않고 정규화</li><li class="hair" style="padding:6pt 0;"><b>판단 보류</b>&nbsp; 자료만으로 확정할 수 없는 3건은 수동 검수로 남겼다</li><li class="hair" style="padding:6pt 0;"><b>갱신</b>&nbsp; 새 공고가 나오면 같은 노트북을 다시 실행</li></ul></div></div></div><div class="prog" style="width:24%;"></div></body></html>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">02 비자부기 · F-2-R</p><p class="label">12 / 51</p></div><div style="margin-top:14pt;"><h1>공고 21건을 서비스 데이터로</h1><p class="muted" style="font-size:12pt; margin-top:4pt;">진재언 · SQLite와 서비스용 CSV 9종</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:1fr 1.3fr; gap:28pt; align-items:start;"><div><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10pt;"><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">21<span style="font-size:14pt;">건</span></p><p class="cap">수집 문서</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">10<span style="font-size:14pt;">개</span></p><p class="cap">공고 차수</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">60<span style="font-size:14pt;">건</span></p><p class="cap">시 · 군별 쿼터</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">67<span style="font-size:14pt;">건</span></p><p class="cap">세부 요건</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">16<span style="font-size:14pt;">건</span></p><p class="cap">AND · OR 그룹</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">45<span style="font-size:14pt;">건</span></p><p class="cap">제출서류</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">6<span style="font-size:14pt;">건</span></p><p class="cap">변경이력</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:24pt;">3<span style="font-size:14pt;">건</span></p><p class="cap">수동 확인</p></div></div><p class="cap" style="margin-top:8pt;">2025년 8차 ~ 2026년 17차 공고와 붙임자료</p></div><div><ul><li class="hair" style="padding:6pt 0;"><b>보존</b>&nbsp; 원문 위치와 문서별 SHA-256을 남겨 구조화 결과를 원본과 대조</li><li class="hair" style="padding:6pt 0;"><b>정제</b>&nbsp; 지역명 · 금액 · 기간 · 날짜 표기 통일, 원문 오탈자는 원문을 고치지 않고 정규화</li><li class="hair" style="padding:6pt 0;"><b>판단 보류</b>&nbsp; 자료만으로 확정할 수 없는 3건은 수동 검수로 남겼다</li><li class="hair" style="padding:6pt 0;"><b>갱신</b>&nbsp; 새 공고가 나오면 같은 노트북을 다시 실행</li></ul></div></div></div><div class="prog" style="width:24%;"></div></body></html>

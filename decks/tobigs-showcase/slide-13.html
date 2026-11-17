@@ -4,22 +4,22 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; overflow-wrap: break-word; }
 body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
   font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
 .label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
 .num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
 .rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
-h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
-h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
-h3 { font-size: 16pt; font-weight: 700; line-height: 1.4; }
-p, li { font-size: 14pt; line-height: 1.55; }
+h1 { font-size: 24pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; text-wrap: balance; }
+h2 { font-size: 18pt; font-weight: 700; line-height: 1.4; }
+h3 { font-size: 14pt; font-weight: 700; line-height: 1.4; text-wrap: balance; }
+p, li { font-size: 12pt; line-height: 1.6; text-wrap: pretty; }
 b { font-weight: 700; }
 .muted { color: #888888; }
 .red { color: #1F3A6E; }
-.cap { font-size: 12pt; color: #888888; line-height: 1.5; }
-.small { font-size: 12pt; line-height: 1.5; }
+.cap { font-size: 10pt; color: #888888; line-height: 1.5; }
+.small { font-size: 11pt; line-height: 1.5; }
 ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
@@ -29,8 +29,8 @@ ul { list-style: none; }
 body { position: relative; }
 img { display: block; object-fit: contain; }
 table { border-collapse: collapse; width: 100%; }
-td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+td, th { font-size: 11pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">02 비자부기 · SCHEMA v1</p><p class="label">13 / 51</p></div><div style="margin-top:14pt;"><h1>비자 여러 개가 함께 쓰는 공통 스키마</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:1.2fr 1fr; gap:28pt; align-items:start;"><div><table><colgroup><col style="width:46%"><col style="width:54%"></colgroup><tr><th><p class="small"><b>테이블</b></p></th><th><p class="small"><b>역할</b></p></th></tr><tr><td><p class="small">visa_requirements</p></td><td><p class="small">비자 기본 정보</p></td></tr><tr><td><p class="small">visa_requirement_criteria</p></td><td><p class="small">개별 심사요건 (OR 조건 그룹 구조화)</p></td></tr><tr><td><p class="small">visa_process_stages</p></td><td><p class="small">신청 절차 단계</p></td></tr><tr><td><p class="small">visa_quota_status</p></td><td><p class="small">잔여 인원 로그</p></td></tr><tr><td><p class="small">change_history</p></td><td><p class="small">공고 회차 간 변경 이력</p></td></tr></table></div><div><p class="label red">첫 적용 · F-4-R 12차 공고</p><div style="display:grid; grid-template-columns:1fr 1fr; gap:12pt; margin-top:6pt;"><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">9<span style="font-size:16pt;">건</span></p><p class="cap">요건</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">4<span style="font-size:16pt;">단계</span></p><p class="cap">절차</p></div></div><p class="small" style="margin-top:14pt;">코드리뷰로 복합조건 구조화, 레코드 수명주기, 쿼터 상태(정원 있음 · 무제한 · 미확인)를 정리</p></div></div></div><div class="prog" style="width:25%;"></div></body></html>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">02 비자부기 · SCHEMA v1</p><p class="label">13 / 51</p></div><div style="margin-top:14pt;"><h1>비자 여러 개가 함께 쓰는 공통 스키마</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:1.2fr 1fr; gap:28pt; align-items:start;"><div><table><colgroup><col style="width:46%"><col style="width:54%"></colgroup><tr><th><p class="small"><b>테이블</b></p></th><th><p class="small"><b>역할</b></p></th></tr><tr><td><p class="small">visa_requirements</p></td><td><p class="small">비자 기본 정보</p></td></tr><tr><td><p class="small">visa_requirement_criteria</p></td><td><p class="small">개별 심사요건 (OR 조건 그룹 구조화)</p></td></tr><tr><td><p class="small">visa_process_stages</p></td><td><p class="small">신청 절차 단계</p></td></tr><tr><td><p class="small">visa_quota_status</p></td><td><p class="small">잔여 인원 로그</p></td></tr><tr><td><p class="small">change_history</p></td><td><p class="small">공고 회차 간 변경 이력</p></td></tr></table></div><div><p class="label red">첫 적용 · F-4-R 12차 공고</p><div style="display:grid; grid-template-columns:1fr 1fr; gap:12pt; margin-top:6pt;"><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">9<span style="font-size:14pt;">건</span></p><p class="cap">요건</p></div><div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">4<span style="font-size:14pt;">단계</span></p><p class="cap">절차</p></div></div><p class="small" style="margin-top:14pt;">코드리뷰로 복합조건 구조화, 레코드 수명주기, 쿼터 상태(정원 있음 · 무제한 · 미확인)를 정리</p></div></div></div><div class="prog" style="width:25%;"></div></body></html>
