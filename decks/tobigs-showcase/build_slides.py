@@ -56,11 +56,12 @@ def raw(html):
     S.append(HEAD + html)
 
 
-def page(label, title, body, sub=""):
+def page(label, title, body, sub="", title_size=None):
     """일반 콘텐츠 슬라이드."""
     sub_html = f'<p class="muted" style="font-size:12pt; margin-top:4pt;">{sub}</p>' if sub else ""
+    h1_attr = f' style="font-size:{title_size}pt;"' if title_size else ''
     raw(f'<body>{strip(label)}'
-        f'<div style="margin-top:14pt;"><h1>{title}</h1>{sub_html}<div class="rule"></div></div>'
+        f'<div style="margin-top:14pt;"><h1{h1_attr}>{title}</h1>{sub_html}<div class="rule"></div></div>'
         f'<div style="flex:1; display:flex; flex-direction:column; justify-content:center;">'
         f'{body}</div></body></html>')
 
@@ -134,11 +135,13 @@ raw('''<body style="justify-content:space-between;">
 <div class="strip hair" style="padding-top:10pt;"><p class="cap">김태은 · 이정연 · 진재언</p>
 <p class="cap">01 / {TOTAL}</p></div></body></html>''')
 
-page("TEAM", "팀 햄부기", cols([
+page("TEAM", "팀 햄부기", two(cols([
     ("김태은", "파이프라인 · 검증", "DE 개론 발표, 비자 공통 스키마와 월별 공고 파이프라인, 비자부기 서비스, 빅콘 데이터 전수 검증과 지표 재설계, 기관 태그"),
     ("이정연", "모델링 · 분석 · 설계", "저장·모델링 발표, HWPX 원문 파싱, 미래에셋 RAG, 빅콘 주제와 에이전트 흐름, 지수 재현, 활동 신호, 위험 특징 사전"),
     ("진재언", "구조화 · 공간 · 지수", "오케스트레이션 발표, F-2-R 공고 구조화, 공통 스키마 v2와 Supabase 적재, SK 데이터 통합, SGIS 고립 위험 지수"),
-], gap=22), sub="팀명의 부기는 거북이에서 따왔다")
+], gap=14), '<img src="./assets/hambugi_meme.png" alt="햄부기 밈 이미지" style="width:100%; height:190pt;">'
+    '<p class="cap" style="margin-top:4pt; text-align:center;">팀 공식 밈</p>', ratio="3fr 1fr", gap=20),
+    sub="팀명의 부기는 거북이에서 따왔다. 햄은 묻지 마세요")
 
 toc = [("01", "데이터 엔지니어링 학습", "개념부터 나눠서 발표", "1주차"),
        ("02", "ICT 공모전 · 비자부기", "공공 문서를 서비스 데이터로", "2~3주차"),
@@ -243,7 +246,7 @@ page("02 비자부기 · SCHEMA v1", "비자 여러 개가 함께 쓰는 공통 
     '<p class="small" style="margin-top:14pt;">코드리뷰로 복합조건 구조화, 레코드 수명주기, 쿼터 상태(정원 있음 · 무제한 · 미확인)를 정리</p>',
     ratio="1.2fr 1fr"))
 
-page("02 비자부기 · SCHEMA v2", "이번 주에 뼈저리게 깨달은 것: 공통 스키마", f'''
+page("02 비자부기 · SCHEMA v2", '이번 주 일단 뼈저리게 깨달은 점:<br><span class="red">공통 스키마</span>', f'''
 <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;">
   {stat("13", "개", "테이블 (서비스 10 + 근거 · 이관 3)", 32)}
   {stat("1,101", "", "공통 데이터 레코드", 32)}
@@ -254,7 +257,7 @@ page("02 비자부기 · SCHEMA v2", "이번 주에 뼈저리게 깨달은 것: 
   <p class="small"><b>통합</b>&nbsp; F-2-R · E-7-4R · F-4-R · D-2의 자격조건 111건, 단계별 서류 77건, 쿼터 61건</p>
   <p class="small"><b>적재</b>&nbsp; Supabase 마이그레이션과 importer. 반복 실행해도 중복 없고, 실패하면 전체 롤백</p>
   <p class="small"><b>검증</b>&nbsp; UUID, 외래키, 순환참조, 조건 논리, 쿼터 계산, 출처 연결을 자동 검사</p>
-</div>''', sub="진재언 · 비자별로 따로 만든 데이터를 하나의 구조로")
+</div>''', sub="진재언 3주차 보고서 첫 줄. 비자별로 따로 만든 데이터를 하나로 합치다가", title_size=32)
 
 page("02 비자부기 · PARSING", "PDF를 버리고 HWPX 원문으로 갔다", two(
     bullets(["<b>문제</b>&nbsp; PDF로 변환하면 강조 표시된 숫자(나이 · 연수 기준)가 사라졌다",
@@ -285,12 +288,12 @@ page("02 비자부기 · SERVICE", "제출 수준까지 한 주에 끌어올렸�
 # ================= 03 미래에셋 =================
 divider("03", "돌아보기 · 미래에셋", "ICT 회고와 RAG 실전", "WEEK 4")
 
-page("03 돌아보기 · ICT", "결과는 탈락, 대신 남은 것", two(
+page("03 돌아보기 · ICT", "결과는 탈락. 주제가 흔했나...", two(
     '<p class="label red">아쉬웠던 점</p>'
     + bullets(["기능 구현에 집중해 탐색시간 단축, 서류 누락 감소, OCR 정확도 같은 <b>실측 자료</b>가 부족했다",
                "기능 범위가 넓어 핵심 강점이 분산됐다",
                "외국인 비자 해결이라는 주제가 흔했을 수 있다"], pad=7),
-    '<p class="label red">그 다음</p>'
+    '<p class="label red">그래도 남은 것</p>'
     + bullets(["<b>9/13</b>&nbsp; 사업계획서 기준으로 탈락 원인 분석",
                "<b>9/20</b>&nbsp; 사업화 대신 팀 학습용 실험 프로젝트로 전환",
                "<b>재언</b>&nbsp; 사용자 로그를 쌓아 고객 이탈 분석 담당",
