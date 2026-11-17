@@ -427,7 +427,14 @@ page(32, "05 회고 · LESSONS", "잘한 것과 아쉬운 것", f'''
             "TODO 팀원 의견"], pad=6)}</div>
 </div>''')
 
-S[33] = HEAD + f'''<body style="justify-content:space-between;">{strip("CLOSING", 33)}
+photos = ''.join(
+    f'<div style="height:150pt; border:1pt solid #BBBBBB;" data-image-placeholder="{c}"><p class="cap" style="padding:6pt;">{c}</p></div>'
+    for c in ["활동 사진 1", "활동 사진 2", "활동 사진 3", "활동 사진 4"])
+page(33, "05 회고 · TOGETHER", "함께한 7주",
+     f'<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12pt;">{photos}</div>'
+     '<p class="cap" style="margin-top:14pt;">함께 작업하던 날들</p>')
+
+S[34] = HEAD + f'''<body style="justify-content:space-between;">{strip("CLOSING", 34)}
 <div><h1 style="font-size:52pt;">감사합니다</h1><div class="rule" style="margin:14pt 0;"></div>
 <p class="num" style="font-size:20pt;">Team Hambugi</p>
 <p class="cap" style="margin-top:4pt;">김태은 · 이정연 · 진재언</p></div>
