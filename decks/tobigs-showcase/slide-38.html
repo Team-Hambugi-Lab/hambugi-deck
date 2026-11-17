@@ -30,8 +30,13 @@ td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">05 에이전트 · LOGIC</p><p class="label">38 / 47</p></div><div style="margin-top:14pt;"><h1>관찰하고, 판단하고, 연결한다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;"><div class="dark" style="padding-top:8pt;"><p class="label red">1 OBSERVE</p><h3 style="margin-top:4pt;">관찰</h3><p class="small" style="margin-top:4pt;">지역 유형으로 관찰 주기를 정하고 사용자의 변화를 계속 기록</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">2 JUDGE</p><h3 style="margin-top:4pt;">판단</h3><p class="small" style="margin-top:4pt;">대화 응답을 24개 특징에 매핑, 해당 범주 수로 티어 1~3</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">3 CONNECT</p><h3 style="margin-top:4pt;">추천</h3><p class="small" style="margin-top:4pt;">특징 × 기관 태그 44개 연결로 기관 17,925곳, 지원사업 60건 추천</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">4 FOLLOW</p><h3 style="margin-top:4pt;">후속</h3><p class="small" style="margin-top:4pt;">이용 결과를 확인하고 재분류. 공백은 지자체에 보고</p></div></div>
-<div style="margin-top:18pt; display:grid; grid-template-columns:1fr 1fr; gap:20pt;">
-  <div class="redtop" style="padding-top:8pt;"><p class="small"><b class="red">위기는 사람이</b>&nbsp; 최근 2주 내 자살 · 자해 생각이나 시도가 나오면 티어 계산 없이 109와 지정 담당자에게 즉시 연결</p></div>
-  <div class="hair" style="padding-top:8pt;"><p class="small"><b>개인을 판정하지 않는다</b>&nbsp; 지역 결과는 관찰 빈도만 바꾸고 개인 티어는 올리지 않는다</p></div>
-</div></div></body></html>
+<body><div class="strip"><p class="label">05 분석 · VALIDATION</p><p class="label">38 / 50</p></div><div style="margin-top:14pt;"><h1>만든 지표가 현실과 맞는가</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
+  <div><p class="label red">SGIS 지수 vs 서울시 관심집단 비율</p>
+  <table><colgroup><col style="width:65%"><col style="width:35%"></colgroup><tr><th><p class="small"><b>지표</b></p></th><th><p class="small"><b>순위상관 ρ</b></p></th></tr><tr><td><p class="small">테마 A 고령 · 독거</p></td><td><p class="small">+0.680</p></td></tr><tr><td><p class="small">테마 B 중장년 · 주거취약</p></td><td><p class="small">+0.633</p></td></tr><tr><td><p class="small">종합 점수</p></td><td><p class="small">+0.639</p></td></tr></table>
+  <p class="cap" style="margin-top:6pt;">강남 22개 동 전체, 9개 대조 모두 양의 상관</p></div>
+  <div><p class="label red">활동 신호율 vs 60대 이상 1인가구 통신정보</p>
+  <table><colgroup><col style="width:50%"><col style="width:25%"><col style="width:25%"></colgroup><tr><th><p class="small"><b>행동 지표</b></p></th><th><p class="small"><b>평일 ρ</b></p></th><th><p class="small"><b>휴일 ρ</b></p></th></tr><tr><td><p class="small">집 체류시간</p></td><td><p class="small">+0.509</p></td><td><p class="small">+0.438</p></td></tr><tr><td><p class="small">이동 횟수</p></td><td><p class="small">-0.601</p></td><td><p class="small">-0.493</p></td></tr></table>
+  <p class="cap" style="margin-top:6pt;">신호가 많은 동일수록 집에 오래 머물고 덜 움직였다. 8개 대조 모두 예상 방향</p></div>
+</div>
+<p class="small" style="margin-top:16pt;">20~30대는 같은 방식이 맞지 않아 신호로 쓰지 않았다. 안 되는 것을 확인한 것도 결과였다.</p></div></body></html>

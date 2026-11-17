@@ -30,13 +30,12 @@ td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">05 분석 · VALIDATION</p><p class="label">35 / 47</p></div><div style="margin-top:14pt;"><h1>만든 지표가 현실과 맞는가</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<body><div class="strip"><p class="label">05 분석 · STEP 1</p><p class="label">35 / 50</p></div><div style="margin-top:14pt;"><h1>고립 위험 지수: 두 테마, 여섯 지표</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
-  <div><p class="label red">SGIS 지수 vs 서울시 관심집단 비율</p>
-  <table><colgroup><col style="width:65%"><col style="width:35%"></colgroup><tr><th><p class="small"><b>지표</b></p></th><th><p class="small"><b>순위상관 ρ</b></p></th></tr><tr><td><p class="small">테마 A 고령 · 독거</p></td><td><p class="small">+0.680</p></td></tr><tr><td><p class="small">테마 B 중장년 · 주거취약</p></td><td><p class="small">+0.633</p></td></tr><tr><td><p class="small">종합 점수</p></td><td><p class="small">+0.639</p></td></tr></table>
-  <p class="cap" style="margin-top:6pt;">강남 22개 동 전체, 9개 대조 모두 양의 상관</p></div>
-  <div><p class="label red">활동 신호율 vs 60대 이상 1인가구 통신정보</p>
-  <table><colgroup><col style="width:50%"><col style="width:25%"><col style="width:25%"></colgroup><tr><th><p class="small"><b>행동 지표</b></p></th><th><p class="small"><b>평일 ρ</b></p></th><th><p class="small"><b>휴일 ρ</b></p></th></tr><tr><td><p class="small">집 체류시간</p></td><td><p class="small">+0.509</p></td><td><p class="small">+0.438</p></td></tr><tr><td><p class="small">이동 횟수</p></td><td><p class="small">-0.601</p></td><td><p class="small">-0.493</p></td></tr></table>
-  <p class="cap" style="margin-top:6pt;">신호가 많은 동일수록 집에 오래 머물고 덜 움직였다. 8개 대조 모두 예상 방향</p></div>
+  <div><p class="label red">THEME A · 고령 + 독거</p>
+  <ul><li class="hair" style="padding:5pt 0;">독거 · 연령: 1인가구율 × 50세 이상 비율</li><li class="hair" style="padding:5pt 0;">노후주거: 1989년 이전 주택 × 비아파트 비율</li><li class="hair" style="padding:5pt 0;">고령 비중: 65세 이상 비율</li></ul></div>
+  <div><p class="label red">THEME B · 중장년 독거 + 주거취약</p>
+  <ul><li class="hair" style="padding:5pt 0;">남성 · 독거: 50~64세 남성 × 1인가구율</li><li class="hair" style="padding:5pt 0;">비주택 · 연령: 고시원 등 거처 × 50세 이상</li><li class="hair" style="padding:5pt 0;">소형 · 비주거: 비주거용 건물 내 주택, 20㎡ 이하</li></ul></div>
 </div>
-<p class="small" style="margin-top:16pt;">20~30대는 같은 방식이 맞지 않아 신호로 쓰지 않았다. 안 되는 것을 확인한 것도 결과였다.</p></div></body></html>
+<p class="small" style="margin-top:18pt;">테마별 표준화 점수를 백분위로 바꾸고, 종합 점수 = (A 백분위 + B 백분위) ÷ 2 를 1~5등급으로 나눴다.</p>
+<p class="cap" style="margin-top:4pt;">참고: America's Health Rankings Senior Report, CDC SVI, OECD 합성지수 지침, 복지부 중장년 남성 고독사 위험</p></div></body></html>

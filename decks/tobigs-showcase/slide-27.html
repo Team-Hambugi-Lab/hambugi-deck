@@ -30,11 +30,4 @@ td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">04 빅콘 · UNIT</p><p class="label">27 / 47</p></div><div style="margin-top:14pt;"><h1>분석 단위를 집계구로 맞췄다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;">
-  <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">1,698<span style="font-size:16pt;"></span></p><p class="cap">분석 대상 집계구 (강남 + 춘천)</p></div>
-  <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">297<span style="font-size:16pt;"></span></p><p class="cap">SGIS 집계구 통계 항목</p></div>
-  <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">184<span style="font-size:16pt;"></span></p><p class="cap">분석에 쓸 항목만 남긴 결과</p></div>
-  <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">0.1<span style="font-size:16pt;">명</span></p><p class="cap">50m 격자 유동 중앙값. 격자 그대로는 노이즈</p></div>
-</div>
-<p class="small" style="margin-top:20pt;">코드 앞자리를 잘라 묶던 방식을 실제 경계 공간조인으로 바꾸고, 합계와 평균 · 결측 처리 규칙을 집계구 마스터 테이블 하나로 맞췄다.</p></div></body></html>
+<body><div class="strip"><p class="label">04 빅콘 · INDEX v0</p><p class="label">27 / 50</p></div><div style="margin-top:14pt;"><h1>지표를 합치기 전에, 같은 걸 재는지부터</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt; align-items:start;"><div><p class="label red">김태은 · 지표 재설계</p><div style="display:flex; align-items:baseline; gap:14pt; margin-top:6pt;"><p class="num" style="font-size:40pt;">-4.219</p><p class="muted">에서</p><p class="num red" style="font-size:40pt;">0.720</p></div><p class="small" style="margin-top:6pt;">서울연구원 4축을 빌린 1차 지수는 Cronbach α가 음수. 지표들이 고립이 아니라 <b>구매력</b>을 재고 있었다. 정의, 예측, 검증 순서로 다시 설계했다.</p></div><div><p class="label red">이정연 · 재현 검증</p><div style="display:flex; align-items:baseline; gap:14pt; margin-top:6pt;"><p class="num" style="font-size:40pt;">0.185</p><p class="muted">vs</p><p class="num red" style="font-size:40pt;">0.589</p></div><p class="small" style="margin-top:6pt;">같은 지수를 보고서만 보고 재현했더니 α가 달랐다. 원인은 <b>주말비 변수의 부호 하나</b>. 가정을 문서로 맞추는 게 코드보다 먼저였다.</p></div></div></div></body></html>

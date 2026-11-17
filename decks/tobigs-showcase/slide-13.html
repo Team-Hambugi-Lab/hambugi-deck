@@ -30,4 +30,15 @@ td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">02 비자부기 · PIPELINE</p><p class="label">13 / 47</p></div><div style="margin-top:14pt;"><h1>매달 올라오는 공고를 자동으로 반영</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:repeat(5,1fr); gap:10pt;"><div class="dark" style="padding-top:8pt;"><p class="label red">01 분류</p><p class="small" style="margin-top:4pt;">새 공고를 비자 유형별로 자동 분류</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">02 추출</p><p class="small" style="margin-top:4pt;">HWPX에서 요건 · 절차 · 쿼터 추출</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">03 비교</p><p class="small" style="margin-top:4pt;">기존 데이터와 차이 비교</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">04 리포트</p><p class="small" style="margin-top:4pt;">변경 내용을 검토 리포트로 생성</p></div><div class="redtop" style="padding-top:8pt;"><p class="label red">05 사람 검토</p><p class="small" style="margin-top:4pt;">DB는 자동 수정하지 않고 사람이 확인 후 반영</p></div></div><p class="small" style="margin-top:20pt;">실제 F-4-R 공고문으로 정상 케이스와 변경 케이스 모두 전 구간 검증</p><p class="cap" style="margin-top:4pt;">자격 판정은 AI가 임의로 하지 않고, 검수된 규칙과 공식기관 확인을 기준으로</p></div></body></html>
+<body><div class="strip"><p class="label">02 비자부기 · SCHEMA v2</p><p class="label">13 / 50</p></div><div style="margin-top:14pt;"><h1>이번 주에 뼈저리게 깨달은 것: 공통 스키마</h1><p class="muted" style="font-size:14pt; margin-top:4pt;">진재언 · 비자별로 따로 만든 데이터를 하나의 구조로</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;">
+  <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">13<span style="font-size:16pt;">개</span></p><p class="cap">테이블 (서비스 10 + 근거 · 이관 3)</p></div>
+  <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">1,101<span style="font-size:16pt;"></span></p><p class="cap">공통 데이터 레코드</p></div>
+  <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">684<span style="font-size:16pt;">건</span></p><p class="cap">원천 데이터 추적정보 (원천문서 24건)</p></div>
+  <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:32pt;">407<span style="font-size:16pt;">개</span></p><p class="cap">자동 검증 테스트, CI 연결</p></div>
+</div>
+<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20pt; margin-top:20pt;">
+  <p class="small"><b>통합</b>&nbsp; F-2-R · E-7-4R · F-4-R · D-2의 자격조건 111건, 단계별 서류 77건, 쿼터 61건</p>
+  <p class="small"><b>적재</b>&nbsp; Supabase 마이그레이션과 importer. 반복 실행해도 중복 없고, 실패하면 전체 롤백</p>
+  <p class="small"><b>검증</b>&nbsp; UUID, 외래키, 순환참조, 조건 논리, 쿼터 계산, 출처 연결을 자동 검사</p>
+</div></div></body></html>

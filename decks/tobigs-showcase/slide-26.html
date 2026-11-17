@@ -30,12 +30,4 @@ td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">04 빅콘 · WHERE</p><p class="label">26 / 47</p></div><div style="margin-top:14pt;"><h1>왜 강남과 춘천만 줬을까</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:32pt;">
-  <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">강남구</p>
-  <p class="muted">대도시 · 1인가구 · 직장 밀집 · 데이터의 15.5%</p></div>
-  <div class="dark" style="padding-top:10pt;"><p class="num" style="font-size:32pt;">춘천시</p>
-  <p class="muted">중소도시 · 고령화 · 넓은 외곽 · 데이터의 84.5%</p></div>
-</div>
-<p style="font-size:18pt; margin-top:24pt;">정반대인 두 지역에서 <b>모두 통하는 지표</b>를 만들면 된다.</p>
-<p class="cap" style="margin-top:8pt;">강남은 외지 유입이 커서 주민 신호가 희석된다는 점도 데이터를 열어본 뒤에야 알았다.</p></div></body></html>
+<body><div class="strip"><p class="label">04 빅콘 · VERIFY</p><p class="label">26 / 50</p></div><div style="margin-top:14pt;"><h1>명세서를 믿지 않고 원본 20개를 다 열었다</h1><p class="muted" style="font-size:14pt; margin-top:4pt;">데이터가 찾으려는 대상을 먼저 지울 수 있다</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><table><colgroup><col style="width:18%"><col style="width:46%"><col style="width:36%"></colgroup><tr><th><p class="small"><b>발견</b></p></th><th><p class="small"><b>내용</b></p></th><th><p class="small"><b>영향</b></p></th></tr><tr><td><p class="small">12월 파일 중복</p></td><td><p class="small">시간대 · 요일 테이블 12월 레코드가 정확히 2배</p></td><td><p class="small">모르고 쓰면 12월 수치 2배</p></td></tr><tr><td><p class="small">비식별 하한 컷</p></td><td><p class="small">카드 결제건수 5건 미만 셀 삭제</p></td><td><p class="small">고령층 · 춘천 등 희소 집단이 체계적으로 누락</p></td></tr><tr><td><p class="small">업종 금액 편중</p></td><td><p class="small">결제금액 50.7%가 미분류 · 세금공과금</p></td><td><p class="small">금액 지표에서 두 업종 제외</p></td></tr><tr><td><p class="small">양자화 단위</p></td><td><p class="small">SK 값이 0.0254 단위로 양자화</p></td><td><p class="small">양수 셀 약 2,100만 개가 이 규칙</p></td></tr><tr><td><p class="small">강남 유입</p></td><td><p class="small">유동인구가 거주인구의 최대 53.9배</p></td><td><p class="small">SK만으로 강남 주민 고립 측정은 어려움</p></td></tr></table></div></body></html>
