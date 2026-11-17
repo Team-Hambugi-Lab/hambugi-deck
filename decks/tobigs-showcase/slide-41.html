@@ -9,7 +9,7 @@ body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
   font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
 .label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
-.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.4; padding-bottom: 2pt; }
+.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
 .rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
 h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
@@ -24,14 +24,17 @@ ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
 .redtop { border-top: 2pt solid #1F3A6E; }
+.chip { display: inline-block; background: #1F3A6E; color: #FFFFFF; padding: 3pt 8pt; border-radius: 2pt; }
+.prog { position: absolute; left: 0; bottom: 0; height: 4pt; background: #1F3A6E; }
+body { position: relative; }
 img { display: block; object-fit: contain; }
 table { border-collapse: collapse; width: 100%; }
 td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">05 에이전트 · LOGIC</p><p class="label">41 / 50</p></div><div style="margin-top:14pt;"><h1>관찰하고, 판단하고, 연결한다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;"><div class="dark" style="padding-top:8pt;"><p class="label red">1 OBSERVE</p><h3 style="margin-top:4pt;">관찰</h3><p class="small" style="margin-top:4pt;">지역 유형으로 관찰 주기를 정하고 사용자의 변화를 계속 기록</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">2 JUDGE</p><h3 style="margin-top:4pt;">판단</h3><p class="small" style="margin-top:4pt;">대화 응답을 24개 특징에 매핑, 해당 범주 수로 티어 1~3</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">3 CONNECT</p><h3 style="margin-top:4pt;">추천</h3><p class="small" style="margin-top:4pt;">특징 × 기관 태그 44개 연결로 기관 17,925곳, 지원사업 60건 추천</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">4 FOLLOW</p><h3 style="margin-top:4pt;">후속</h3><p class="small" style="margin-top:4pt;">이용 결과를 확인하고 재분류. 공백은 지자체에 보고</p></div></div>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">05 에이전트 · LOGIC</p><p class="label">41 / 50</p></div><div style="margin-top:14pt;"><h1>관찰하고, 판단하고, 연결한다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16pt;"><div class="dark" style="padding-top:8pt;"><p class="label red">1 OBSERVE</p><h3 style="margin-top:4pt;">관찰</h3><p class="small" style="margin-top:4pt;">지역 유형으로 관찰 주기를 정하고 사용자의 변화를 계속 기록</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">2 JUDGE</p><h3 style="margin-top:4pt;">판단</h3><p class="small" style="margin-top:4pt;">대화 응답을 24개 특징에 매핑, 해당 범주 수로 티어 1~3</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">3 CONNECT</p><h3 style="margin-top:4pt;">추천</h3><p class="small" style="margin-top:4pt;">특징 × 기관 태그 44개 연결로 기관 17,925곳, 지원사업 60건 추천</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">4 FOLLOW</p><h3 style="margin-top:4pt;">후속</h3><p class="small" style="margin-top:4pt;">이용 결과를 확인하고 재분류. 공백은 지자체에 보고</p></div></div>
 <div style="margin-top:18pt; display:grid; grid-template-columns:1fr 1fr; gap:20pt;">
   <div class="redtop" style="padding-top:8pt;"><p class="small"><b class="red">위기는 사람이</b>&nbsp; 최근 2주 내 자살 · 자해 생각이나 시도가 나오면 티어 계산 없이 109와 지정 담당자에게 즉시 연결</p></div>
   <div class="hair" style="padding-top:8pt;"><p class="small"><b>개인을 판정하지 않는다</b>&nbsp; 지역 결과는 관찰 빈도만 바꾸고 개인 티어는 올리지 않는다</p></div>
-</div></div></body></html>
+</div></div><div class="prog" style="width:82%;"></div></body></html>

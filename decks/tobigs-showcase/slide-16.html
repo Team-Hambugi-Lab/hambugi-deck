@@ -9,7 +9,7 @@ body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
   font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
 .label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
-.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.4; padding-bottom: 2pt; }
+.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
 .rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
 h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
@@ -24,10 +24,13 @@ ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
 .redtop { border-top: 2pt solid #1F3A6E; }
+.chip { display: inline-block; background: #1F3A6E; color: #FFFFFF; padding: 3pt 8pt; border-radius: 2pt; }
+.prog { position: absolute; left: 0; bottom: 0; height: 4pt; background: #1F3A6E; }
+body { position: relative; }
 img { display: block; object-fit: contain; }
 table { border-collapse: collapse; width: 100%; }
 td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">02 비자부기 · SERVICE</p><p class="label">16 / 50</p></div><div style="margin-top:14pt;"><h1>제출 수준까지 한 주에 끌어올렸다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14pt;"><div class="dark" style="padding-top:8pt;"><p class="label red">BACKEND</p><h3 style="margin-top:4pt;">인증 · BFF</h3><p class="small" style="margin-top:4pt;">아이디 · 비밀번호 인증, 브라우저가 Supabase에 직접 붙지 않도록 BFF로 이관, RLS 정비</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">AI</p><h3 style="margin-top:4pt;">RAG 챗봇</h3><p class="small" style="margin-top:4pt;">하이브리드 비자 상담 챗봇 MVP, OCR 서류 점검 결과와 연동, 다국어 응답 개선</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">UX</p><h3 style="margin-top:4pt;">온보딩 · 홈</h3><p class="small" style="margin-top:4pt;">비자 4종 온보딩 퍼널, 실제 잔여 인원 표시, 서류 준비 단계를 실데이터로</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">INFRA</p><h3 style="margin-top:4pt;">지도 · 다국어</h3><p class="small" style="margin-top:4pt;">카카오맵 기관 표시, next-intl 다국어 라우팅, 약관 · 개인정보처리방침</p></div></div></div></body></html>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">02 비자부기 · SERVICE</p><p class="label">16 / 50</p></div><div style="margin-top:14pt;"><h1>제출 수준까지 한 주에 끌어올렸다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14pt;"><div class="dark" style="padding-top:8pt;"><p class="label red">BACKEND</p><h3 style="margin-top:4pt;">인증 · BFF</h3><p class="small" style="margin-top:4pt;">아이디 · 비밀번호 인증, 브라우저가 Supabase에 직접 붙지 않도록 BFF로 이관, RLS 정비</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">AI</p><h3 style="margin-top:4pt;">RAG 챗봇</h3><p class="small" style="margin-top:4pt;">하이브리드 비자 상담 챗봇 MVP, OCR 서류 점검 결과와 연동, 다국어 응답 개선</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">UX</p><h3 style="margin-top:4pt;">온보딩 · 홈</h3><p class="small" style="margin-top:4pt;">비자 4종 온보딩 퍼널, 실제 잔여 인원 표시, 서류 준비 단계를 실데이터로</p></div><div class="dark" style="padding-top:8pt;"><p class="label red">INFRA</p><h3 style="margin-top:4pt;">지도 · 다국어</h3><p class="small" style="margin-top:4pt;">카카오맵 기관 표시, next-intl 다국어 라우팅, 약관 · 개인정보처리방침</p></div></div></div><div class="prog" style="width:32%;"></div></body></html>

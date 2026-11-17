@@ -16,7 +16,7 @@ body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
   font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
 .label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
-.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.4; padding-bottom: 2pt; }
+.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
 .rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
 h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
@@ -31,6 +31,9 @@ ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
 .redtop { border-top: 2pt solid #1F3A6E; }
+.chip { display: inline-block; background: #1F3A6E; color: #FFFFFF; padding: 3pt 8pt; border-radius: 2pt; }
+.prog { position: absolute; left: 0; bottom: 0; height: 4pt; background: #1F3A6E; }
+body { position: relative; }
 img { display: block; object-fit: contain; }
 table { border-collapse: collapse; width: 100%; }
 td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
@@ -44,7 +47,7 @@ S = []
 
 def strip(label):
     """상단 라벨 띠. 번호는 추가 순서로 자동 부여."""
-    return (f'<div class="strip"><p class="label">{label}</p>'
+    return (f'<div class="strip"><p class="label chip" style="color:#FFFFFF;">{label}</p>'
             f'<p class="label">{len(S) + 1:02d} / {{TOTAL}}</p></div>')
 
 
@@ -71,7 +74,7 @@ def divider(num, title, sub, weeks):
   <h1 style="font-size:40pt; margin-top:6pt;">{title}</h1>
   <p class="muted" style="font-size:16pt; margin-top:6pt;">{sub}</p></div>
 </div>
-<div style="height:8pt; background:#1A1A1A;"></div></body></html>''')
+<div style="height:8pt; background:#1F3A6E;"></div></body></html>''')
 
 
 def cols(items, gap=20, top="dark"):
@@ -625,6 +628,7 @@ for f in OUT.glob("slide-*.html"):
     f.unlink()
 for n, html in enumerate(S, start=1):
     html = html.replace("{TOTAL}", str(TOTAL))
+    html = html.replace("</body>", f'<div class="prog" style="width:{n / TOTAL * 100:.0f}%;"></div></body>', 1)
     assert not BANNED.search(html), f"slide {n}: 금지 문자 {BANNED.findall(html)}"
     (OUT / f"slide-{n:02d}.html").write_text(html, encoding="utf-8")
 print("ok", TOTAL)

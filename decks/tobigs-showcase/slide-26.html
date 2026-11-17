@@ -9,7 +9,7 @@ body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
   font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
 .label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
-.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.4; padding-bottom: 2pt; }
+.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
 .rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
 h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
@@ -24,10 +24,13 @@ ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
 .redtop { border-top: 2pt solid #1F3A6E; }
+.chip { display: inline-block; background: #1F3A6E; color: #FFFFFF; padding: 3pt 8pt; border-radius: 2pt; }
+.prog { position: absolute; left: 0; bottom: 0; height: 4pt; background: #1F3A6E; }
+body { position: relative; }
 img { display: block; object-fit: contain; }
 table { border-collapse: collapse; width: 100%; }
 td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">04 빅콘 · VERIFY</p><p class="label">26 / 50</p></div><div style="margin-top:14pt;"><h1>명세서를 믿지 않고 원본 20개를 다 열었다</h1><p class="muted" style="font-size:14pt; margin-top:4pt;">데이터가 찾으려는 대상을 먼저 지울 수 있다</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><table><colgroup><col style="width:18%"><col style="width:46%"><col style="width:36%"></colgroup><tr><th><p class="small"><b>발견</b></p></th><th><p class="small"><b>내용</b></p></th><th><p class="small"><b>영향</b></p></th></tr><tr><td><p class="small">12월 파일 중복</p></td><td><p class="small">시간대 · 요일 테이블 12월 레코드가 정확히 2배</p></td><td><p class="small">모르고 쓰면 12월 수치 2배</p></td></tr><tr><td><p class="small">비식별 하한 컷</p></td><td><p class="small">카드 결제건수 5건 미만 셀 삭제</p></td><td><p class="small">고령층 · 춘천 등 희소 집단이 체계적으로 누락</p></td></tr><tr><td><p class="small">업종 금액 편중</p></td><td><p class="small">결제금액 50.7%가 미분류 · 세금공과금</p></td><td><p class="small">금액 지표에서 두 업종 제외</p></td></tr><tr><td><p class="small">양자화 단위</p></td><td><p class="small">SK 값이 0.0254 단위로 양자화</p></td><td><p class="small">양수 셀 약 2,100만 개가 이 규칙</p></td></tr><tr><td><p class="small">강남 유입</p></td><td><p class="small">유동인구가 거주인구의 최대 53.9배</p></td><td><p class="small">SK만으로 강남 주민 고립 측정은 어려움</p></td></tr></table></div></body></html>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">04 빅콘 · VERIFY</p><p class="label">26 / 50</p></div><div style="margin-top:14pt;"><h1>명세서를 믿지 않고 원본 20개를 다 열었다</h1><p class="muted" style="font-size:14pt; margin-top:4pt;">데이터가 찾으려는 대상을 먼저 지울 수 있다</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><table><colgroup><col style="width:18%"><col style="width:46%"><col style="width:36%"></colgroup><tr><th><p class="small"><b>발견</b></p></th><th><p class="small"><b>내용</b></p></th><th><p class="small"><b>영향</b></p></th></tr><tr><td><p class="small">12월 파일 중복</p></td><td><p class="small">시간대 · 요일 테이블 12월 레코드가 정확히 2배</p></td><td><p class="small">모르고 쓰면 12월 수치 2배</p></td></tr><tr><td><p class="small">비식별 하한 컷</p></td><td><p class="small">카드 결제건수 5건 미만 셀 삭제</p></td><td><p class="small">고령층 · 춘천 등 희소 집단이 체계적으로 누락</p></td></tr><tr><td><p class="small">업종 금액 편중</p></td><td><p class="small">결제금액 50.7%가 미분류 · 세금공과금</p></td><td><p class="small">금액 지표에서 두 업종 제외</p></td></tr><tr><td><p class="small">양자화 단위</p></td><td><p class="small">SK 값이 0.0254 단위로 양자화</p></td><td><p class="small">양수 셀 약 2,100만 개가 이 규칙</p></td></tr><tr><td><p class="small">강남 유입</p></td><td><p class="small">유동인구가 거주인구의 최대 53.9배</p></td><td><p class="small">SK만으로 강남 주민 고립 측정은 어려움</p></td></tr></table></div><div class="prog" style="width:52%;"></div></body></html>

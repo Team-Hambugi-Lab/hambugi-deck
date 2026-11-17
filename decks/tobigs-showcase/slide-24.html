@@ -9,7 +9,7 @@ body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
   font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
 .strip { display: flex; justify-content: space-between; align-items: center; }
 .label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
-.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.4; padding-bottom: 2pt; }
+.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
 .rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
 h1 { font-size: 28pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
 h2 { font-size: 20pt; font-weight: 700; line-height: 1.4; }
@@ -24,17 +24,20 @@ ul { list-style: none; }
 .hair { border-top: 1pt solid #BBBBBB; }
 .dark { border-top: 2pt solid #1A1A1A; }
 .redtop { border-top: 2pt solid #1F3A6E; }
+.chip { display: inline-block; background: #1F3A6E; color: #FFFFFF; padding: 3pt 8pt; border-radius: 2pt; }
+.prog { position: absolute; left: 0; bottom: 0; height: 4pt; background: #1F3A6E; }
+body { position: relative; }
 img { display: block; object-fit: contain; }
 table { border-collapse: collapse; width: 100%; }
 td, th { font-size: 12pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label">04 빅콘 · WHY</p><p class="label">24 / 50</p></div><div style="margin-top:14pt;"><h1>사회적 고립은 왜 먼저 찾아야 하나</h1><p class="muted" style="font-size:14pt; margin-top:4pt;">도움이 필요할 때 기댈 사람이 없는 상태 (통계청 사회적 고립도)</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">04 빅콘 · WHY</p><p class="label">24 / 50</p></div><div style="margin-top:14pt;"><h1>사회적 고립은 왜 먼저 찾아야 하나</h1><p class="muted" style="font-size:14pt; margin-top:4pt;">도움이 필요할 때 기댈 사람이 없는 상태 (통계청 사회적 고립도)</p><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
 <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20pt;">
   <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:40pt;">13.6<span style="font-size:16pt;">%</span></p><p class="cap">서울 1인가구 중 도움을 청할 사람이 한 명도 없는 비율</p></div>
   <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:40pt;">1.29<span style="font-size:16pt;">배</span></p><p class="cap">사회적 고립의 사망 위험. 외로움 1.26배, 독거 1.32배</p></div>
   <div class="dark" style="padding-top:6pt;"><p class="num" style="font-size:40pt;">26.6<span style="font-size:16pt;">%</span></p><p class="cap">고독사 최초 발견자가 가족인 경우</p></div>
 </div>
 <p style="font-size:16pt; margin-top:22pt;">고독은 감정, 고립은 상태. 고립은 스스로 드러나지 않으니 <b>먼저 찾아야</b> 한다.</p>
-<p class="cap" style="margin-top:6pt;">박민진 · 김성아(2022), Holt-Lunstad et al.(2015), 보건복지부 고독사 실태조사</p></div></body></html>
+<p class="cap" style="margin-top:6pt;">박민진 · 김성아(2022), Holt-Lunstad et al.(2015), 보건복지부 고독사 실태조사</p></div><div class="prog" style="width:48%;"></div></body></html>
