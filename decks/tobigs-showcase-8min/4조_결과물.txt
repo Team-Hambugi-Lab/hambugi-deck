@@ -15,7 +15,7 @@
 [2] 2026 빅콘테스트 AI데이터활용 분야 · 사회적 고립 예방 AI 에이전트 (2026.10.26 제출)
 집계구 기반 사회적 고립 조기 탐지 및 지속 관리: 지역의 신호를 복지 지원으로 연결하는 AI 에이전트
 - 결과보고서: 별도 PDF로 제출
-- 분석 코드: https://github.com/Team-Hambugi-Lab/bigcontest-social-isolation (비공개 저장소, 열람이 필요하면 요청 시 권한 부여)
+- 분석 코드: https://github.com/Team-Hambugi-Lab/bigcontest-social-isolation
 
 [3] 미래에셋 AI 페스티벌
 금융 상품 문서 RAG (파싱, 검색 인덱스, 질문 라우팅, 답변 생성과 검증)
