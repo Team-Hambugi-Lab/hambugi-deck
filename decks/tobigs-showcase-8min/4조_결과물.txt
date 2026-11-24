@@ -1,0 +1,22 @@
+4조 Team Hambugi 심화세션 결과물
+팀원: 김태은, 이정연, 진재언 (데이터 엔지니어링 트랙)
+
+[발표 자료]
+- 발표회 덱 (8분판 PDF, 발표 대본 포함 레포)
+  https://github.com/Team-Hambugi-Lab/hambugi-deck
+
+[1] 제13회 전국 ICT융합 공모전 · 비자부기 (2026.08.28 제출)
+충북 외국인 주민을 위한 다국어 AI 비자 준비 서비스
+- 서비스 데모: https://visa-bugi-web.vercel.app
+- 웹 서비스 코드: https://github.com/Team-Hambugi-Lab/visa-bugi-web
+- 비자 데이터 수집 · 구조화 코드 (HWPX 파싱, 공통 스키마, Supabase 적재, 자동 검증): https://github.com/Team-Hambugi-Lab/visa-data
+- 시연 영상: 별도 파일로 제출
+
+[2] 2026 빅콘테스트 AI데이터활용 분야 · 사회적 고립 예방 AI 에이전트 (2026.10.26 제출)
+집계구 기반 사회적 고립 조기 탐지 및 지속 관리: 지역의 신호를 복지 지원으로 연결하는 AI 에이전트
+- 결과보고서: 별도 PDF로 제출
+- 분석 코드: https://github.com/Team-Hambugi-Lab/bigcontest-social-isolation (비공개 저장소, 열람이 필요하면 요청 시 권한 부여)
+
+[3] 미래에셋 AI 페스티벌
+금융 상품 문서 RAG (파싱, 검색 인덱스, 질문 라우팅, 답변 생성과 검증)
+- 결과 분석과 회고는 발표 자료 13번 슬라이드 참고
