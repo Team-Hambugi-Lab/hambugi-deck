@@ -1,4 +1,4 @@
-4조 Team Hambugi 심화세션 결과물
+3조 Team Hambugi 심화세션 결과물
 팀원: 김태은, 이정연, 진재언 (데이터 엔지니어링 트랙)
 
 [GitHub 조직]

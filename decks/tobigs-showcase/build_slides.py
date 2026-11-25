@@ -126,7 +126,7 @@ def two(left, right, ratio="1fr 1fr", gap=28):
 
 
 raw('''<body style="justify-content:space-between;">
-<div class="strip"><p class="label">TOBIGS 26기 심화세션 결과 발표회</p><p class="label">4조 · DATA ENGINEERING</p></div>
+<div class="strip"><p class="label">TOBIGS 26기 심화세션 결과 발표회</p><p class="label">3조 · DATA ENGINEERING</p></div>
 <div><h1 style="font-size:52pt;">투빅스 심화세션 발표회</h1>
 <p class="num red" style="font-size:24pt; margin-top:6pt;">Team Hambugi</p>
 <div class="rule" style="margin:14pt 0;"></div>

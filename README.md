@@ -6,7 +6,7 @@ Team Hambugi 발표 덱 모음입니다. 슬라이드를 HTML로 만들고 PDF�
 
 | 덱 | 내용 | 바로 보기 |
 |---|---|---|
-| `decks/tobigs-showcase/` | 투빅스 26기 심화세션 발표회 4조 최종 덱 (50장) | [PDF](decks/tobigs-showcase/4조_발표자료.pdf) |
+| `decks/tobigs-showcase/` | 투빅스 26기 심화세션 발표회 3조 최종 덱 (50장) | [PDF](decks/tobigs-showcase/3조_발표자료.pdf) |
 
 ## 보는 방법
 
@@ -46,7 +46,7 @@ slides-grab validate --slides-dir decks/tobigs-showcase
 
 # 4. 미리보기와 PDF 갱신
 slides-grab build-viewer --slides-dir decks/tobigs-showcase
-slides-grab pdf --slides-dir decks/tobigs-showcase --output "decks/tobigs-showcase/4조_발표자료.pdf"
+slides-grab pdf --slides-dir decks/tobigs-showcase --output "decks/tobigs-showcase/3조_발표자료.pdf"
 ```
 
 고친 뒤에는 `build_slides.py`, `slide-*.html`, `viewer.html`, PDF를 함께 커밋합니다.
