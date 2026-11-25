@@ -6,7 +6,7 @@ Team Hambugi 발표 덱 모음입니다. 슬라이드를 HTML로 만들고 PDF�
 
 | 덱 | 내용 | 바로 보기 |
 |---|---|---|
-| `decks/tobigs-showcase/` | 투빅스 26기 심화세션 발표회 4조 최종 덱 (49장) | [PDF](decks/tobigs-showcase/4조_발표자료.pdf) |
+| `decks/tobigs-showcase/` | 투빅스 26기 심화세션 발표회 4조 최종 덱 (50장) | [PDF](decks/tobigs-showcase/4조_발표자료.pdf) |
 
 ## 보는 방법
 

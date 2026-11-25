@@ -33,13 +33,13 @@ td, th { font-size: 11pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">03 빅콘 · 분석 VALIDATION</p><p class="label">33 / 49</p></div><div style="margin-top:14pt;"><h1>만든 지표가 현실과 맞는가</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
-  <div><p class="label red">SGIS 지수 vs 서울시 관심집단 비율</p>
-  <table><colgroup><col style="width:65%"><col style="width:35%"></colgroup><tr><th><p class="small"><b>지표</b></p></th><th><p class="small"><b>순위상관 ρ</b></p></th></tr><tr><td><p class="small">테마 A 고령 · 독거</p></td><td><p class="small">+0.680</p></td></tr><tr><td><p class="small">테마 B 중장년 · 주거취약</p></td><td><p class="small">+0.633</p></td></tr><tr><td><p class="small">종합 점수</p></td><td><p class="small">+0.639</p></td></tr></table>
-  <p class="cap" style="margin-top:6pt;">강남 22개 동 전체, 9개 대조 모두 양의 상관</p></div>
-  <div><p class="label red">활동 신호율 vs 60대 이상 1인가구 통신정보</p>
-  <table><colgroup><col style="width:50%"><col style="width:25%"><col style="width:25%"></colgroup><tr><th><p class="small"><b>행동 지표</b></p></th><th><p class="small"><b>평일 ρ</b></p></th><th><p class="small"><b>휴일 ρ</b></p></th></tr><tr><td><p class="small">집 체류시간</p></td><td><p class="small">+0.509</p></td><td><p class="small">+0.438</p></td></tr><tr><td><p class="small">이동 횟수</p></td><td><p class="small">-0.601</p></td><td><p class="small">-0.493</p></td></tr></table>
-  <p class="cap" style="margin-top:6pt;">신호가 많은 동일수록 집에 오래 머물고 덜 움직였다. 8개 대조 모두 예상 방향</p></div>
-</div>
-<p class="small" style="margin-top:16pt;">20~30대는 같은 방식이 맞지 않아 신호로 쓰지 않았다. 안 되는 것을 확인한 것도 결과였다.</p></div><div class="prog" style="width:67%;"></div></body></html>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">03 빅콘 · 분석 STEP 2</p><p class="label">33 / 50</p></div><div style="margin-top:14pt;"><h1>기대보다 덜 움직이는 동네를 찾는다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1.25fr 1fr; gap:24pt; align-items:center;">
+  <div><img src="./assets/chart_residual.png" alt="예시 집계구의 실제 대비 기대 유동 비율" style="width:100%; height:150pt;">
+  <p class="cap" style="margin-top:6pt;">예시 집계구: 7·9·10·11월이 판정선 미만, 평균 로그 잔차 -0.108</p></div>
+  <div>
+  <p class="small"><b>기대 유동</b> = OLS(60대 이상 거주인구, 종사자 수, 다른 연령 유동, 월, 지역)</p>
+  <ul><li class="hair" style="padding:5pt 0;">6개월 중 <b>4개월 이상</b> 로그 잔차 &lt; -0.1</li><li class="hair" style="padding:5pt 0;">6개월 평균 로그 잔차 &lt; -0.1</li><li class="hair" style="padding:5pt 0;">-0.1은 실제 유동이 기대보다 약 9.5% 적다는 뜻</li></ul>
+  <p class="num red" style="font-size:28pt; margin-top:8pt;">461<span style="font-size:12pt;"> 곳</span></p>
+  <p class="cap">60대 이상 활동 저하 신호 집계구</p></div>
+</div></div><div class="prog" style="width:66%;"></div></body></html>

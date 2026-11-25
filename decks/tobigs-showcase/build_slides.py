@@ -247,6 +247,18 @@ page("02 비자부기 · SCHEMA v1", "비자 여러 개가 함께 쓰는 공통 
     + stat("9", "건", "요건", 32) + stat("4", "단계", "절차", 32) + '</div>'
     '<p class="small" style="margin-top:14pt;">코드리뷰로 복합조건 구조화, 레코드 수명주기, 쿼터 상태(정원 있음 · 무제한 · 미확인)를 정리</p>',
     ratio="1.2fr 1fr"))
+
+page("02 비자부기 · SCHEMA v2", "이번 주 일단 뼈저리게 깨달은 점: <span class=\"red\">공통 스키마</span>", two(
+    '<p class="label">v1 · 5개 테이블</p>'
+    '<p class="small" style="margin-top:4pt;">F-4-R 중심의 평면 구조라 F-2-R의 중첩 조건, E-7-4R의 점수제, 쿼터 세분화, 서류 대체 관계를 담을 수 없었다.</p>'
+    '<p class="label red" style="margin-top:14pt;">v2 · 13개 테이블 (서비스 10 + 근거 · 이관 3)</p>'
+    + bullets(["명세 문서를 먼저 확정하고 검증기부터 구현",
+               "F-4-R, E-7-4R, F-2-R 순서로 이관",
+               "검증을 통과한 레코드에만 UUID를 마지막에 발급"], pad=4),
+    '<div style="display:grid; grid-template-columns:1fr 1fr; gap:12pt;">'
+    + stat("1,101", "", "통합 레코드", 30) + stat("684", "건", "원천 데이터 추적정보", 30)
+    + stat("407", "개", "자동 검증 테스트", 30) + stat("+8,828", "", "PR #46 변경 줄 수", 30) + '</div>'
+    '<p class="cap" style="margin-top:8pt;">visa-data #44, PR #46</p>'), title_size=22)
 page("02 비자부기 · PARSING", "PDF를 버리고 HWPX 원문으로 갔다", two(
     bullets(["<b>문제</b>&nbsp; PDF로 변환하면 강조 표시된 숫자(나이 · 연수 기준)가 사라졌다",
              "<b>구조</b>&nbsp; HWPX는 XML · 이미지 · 메타데이터를 묶은 ZIP. section0.xml에 본문",
@@ -284,17 +296,19 @@ page("02 비자부기 · TROUBLESHOOTING 1", "공고 문장이 통째로 사라�
     '<p class="small" style="font-family:Menlo, monospace;">⑤ 대한민국의 이익이나 공공의 안전 등을...</p></div>'
     '<p class="cap" style="margin-top:8pt;">덤: 페이지 번호는 자동으로 채우지 않기로 했다. 틀린 값이 그럴듯하게 들어가는 것보다 비워두는 게 안전하다. (visa-data #7)</p>',
     ratio="1fr 1.15fr"))
-page("02 비자부기 · TROUBLESHOOTING 2", "이번 주 일단 뼈저리게 깨달은 점: <span class=\"red\">공통 스키마</span>", two(
-    '<p class="label">v1 · 5개 테이블</p>'
-    '<p class="small" style="margin-top:4pt;">F-4-R 중심의 평면 구조라 F-2-R의 중첩 조건, E-7-4R의 점수제, 쿼터 세분화, 서류 대체 관계를 담을 수 없었다.</p>'
-    '<p class="label red" style="margin-top:14pt;">v2 · 13개 테이블 (서비스 10 + 근거 · 이관 3)</p>'
-    + bullets(["명세 문서를 먼저 확정하고 검증기부터 구현",
-               "F-4-R, E-7-4R, F-2-R 순서로 이관",
-               "검증을 통과한 레코드에만 UUID를 마지막에 발급"], pad=4),
-    '<div style="display:grid; grid-template-columns:1fr 1fr; gap:12pt;">'
-    + stat("1,101", "", "통합 레코드", 30) + stat("684", "건", "원천 데이터 추적정보", 30)
-    + stat("407", "개", "자동 검증 테스트", 30) + stat("+8,828", "", "PR #46 변경 줄 수", 30) + '</div>'
-    '<p class="cap" style="margin-top:8pt;">visa-data #44, PR #46</p>'), title_size=22)
+page("02 비자부기 · TROUBLESHOOTING 2", "고치다 보니 같은 기관 안내가 갈라졌다", two(
+    '<p class="label red">문제 · 위험 상황 안내 테이블</p>'
+    + bullets(["근로복지공단 정보가 지사별 행마다 그대로 복사돼 있었다",
+               "안내 문구도 행마다 복사돼, 임금체불 2행 중 한 행에만 지역 대표번호가 들어가며 <b>내용이 갈라졌다</b>",
+               "미확인 값이 컬럼마다 \"N/A\"와 빈칸으로 제각각",
+               "외래키 검증이 이 테이블은 검사하지 않았다"], pad=4),
+    '<p class="label red">해결 · 1주차에 배운 정규화 그대로</p>'
+    + bullets(["중복된 지사 행을 하나로 병합",
+               "안내 문구를 별도 테이블(risk_keyword_messages)로 분리",
+               "미확인 표기 통일, 컬럼별 빈칸 의미를 README 표로",
+               "외래키 검증 스크립트를 reference 테이블까지 확장"], pad=4)
+    + '<p class="cap" style="margin-top:8pt;">갱신 이상(update anomaly)을 실제로 겪고 고친 사례 · visa-data #45, PR #50 (김태은)</p>'))
+
 page("02 비자부기 · RESULT", "결과는 탈락. 주제가 흔했나...", '''
 <div style="display:grid; grid-template-columns:1fr 1fr 0.7fr; gap:20pt; align-items:start;">
   <div><p class="label red">아쉬웠던 점</p>''' + bullets([
