@@ -6,8 +6,7 @@ Team Hambugi 발표 덱 모음입니다. 슬라이드를 HTML로 만들고 PDF�
 
 | 덱 | 내용 | 바로 보기 |
 |---|---|---|
-| `decks/tobigs-showcase-8min/` | **발표회 제출용 8분판 (15장)** | [PDF](decks/tobigs-showcase-8min/4조_발표자료.pdf) |
-| `decks/tobigs-showcase/` | 투빅스 26기 심화세션 발표회 전체판 (51장, 부록용) | [PDF](decks/tobigs-showcase/tobigs-showcase.pdf) |
+| `decks/tobigs-showcase/` | 투빅스 26기 심화세션 발표회 4조 최종 덱 (22장) | [PDF](decks/tobigs-showcase/4조_발표자료.pdf) |
 
 ## 보는 방법
 
@@ -27,7 +26,7 @@ open decks/tobigs-showcase/viewer.html      # Windows는 파일을 더블클릭
 
 ## 고치는 방법
 
-전체판 내용은 `decks/tobigs-showcase/build_slides.py`, 8분판은 `decks/tobigs-showcase-8min/build_8min.py`에 있습니다. 8분판은 전체판의 디자인 설정을 그대로 가져다 씁니다. `slide-*.html`은 이 스크립트가 만들어내는 결과물이라 직접 고치면 다음 생성 때 덮어써집니다.
+슬라이드 내용은 `decks/tobigs-showcase/build_slides.py` 한 파일에 들어 있습니다. `slide-*.html`은 이 스크립트가 만들어내는 결과물이라 직접 고치면 다음 생성 때 덮어써집니다.
 
 ### 준비
 
@@ -47,7 +46,7 @@ slides-grab validate --slides-dir decks/tobigs-showcase
 
 # 4. 미리보기와 PDF 갱신
 slides-grab build-viewer --slides-dir decks/tobigs-showcase
-slides-grab pdf --slides-dir decks/tobigs-showcase --output decks/tobigs-showcase/tobigs-showcase.pdf
+slides-grab pdf --slides-dir decks/tobigs-showcase --output "decks/tobigs-showcase/4조_발표자료.pdf"
 ```
 
 고친 뒤에는 `build_slides.py`, `slide-*.html`, `viewer.html`, PDF를 함께 커밋합니다.
