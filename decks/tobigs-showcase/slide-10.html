@@ -33,4 +33,11 @@ td, th { font-size: 11pt; padding: 5pt 6pt; text-align: left; border-top: 1pt so
 th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
 </style>
 </head>
-<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">02 비자부기 · TROUBLESHOOTING 1</p><p class="label">10 / 22</p></div><div style="margin-top:14pt;"><h1>공고 문장이 통째로 사라졌다</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="display:grid; grid-template-columns:1fr 1.15fr; gap:28pt; align-items:start;"><div><p class="label red">문제</p><p class="small" style="margin-top:4pt;">E-7-4R 공고에서 제외대상 ⑤⑥ 항목이 추출 결과에서 통째로 빠졌다.</p><p class="label red" style="margin-top:12pt;">원인</p><p class="small" style="margin-top:4pt;">글자 중간에 고정폭 공백 태그가 끼면, 그 뒤 글자는 <b>.text</b>가 아니라 자식 태그의 <b>.tail</b>에 저장된다.</p><p class="label red" style="margin-top:12pt;">해결</p><p class="small" style="margin-top:4pt;"><b>itertext()</b>로 하위 텍스트를 순서대로 모아 복원. 추출 결과 21,594에서 22,319 bytes로.</p></div><div><div style="background:#F3F5F8; padding:12pt; font-family:Menlo, monospace;"><p class="small" style="font-family:Menlo, monospace;">&lt;hp:t&gt;⑤&lt;hp:fwSpace/&gt; 대한민국의 이익이나...&lt;/hp:t&gt;</p><p class="cap" style="margin-top:10pt;">before · run.text</p><p class="small" style="font-family:Menlo, monospace;">⑤</p><p class="cap" style="margin-top:8pt;">after · "".join(run.itertext())</p><p class="small" style="font-family:Menlo, monospace;">⑤ 대한민국의 이익이나 공공의 안전 등을...</p></div><p class="cap" style="margin-top:8pt;">덤: 페이지 번호는 자동으로 채우지 않기로 했다. 틀린 값이 그럴듯하게 들어가는 것보다 비워두는 게 안전하다. (visa-data #7)</p></div></div></div><div class="prog" style="width:45%;"></div></body></html>
+<body style="justify-content:space-between;"><div class="strip"><p class="label chip" style="color:#FFFFFF;">SECTION 02</p><p class="label">10 / 49</p></div>
+<div style="display:flex; align-items:flex-end; gap:28pt;">
+  <p class="num" style="font-size:120pt; line-height:1.4;">02</p>
+  <div style="padding-bottom:22pt;"><p class="label red">WEEK 2 ~ 4</p>
+  <h1 style="font-size:40pt; margin-top:6pt;">ICT 공모전 · 비자부기</h1>
+  <p class="muted" style="font-size:14pt; margin-top:6pt;">공공 문서를 서비스 데이터로</p></div>
+</div>
+<div style="height:8pt; background:#1F3A6E;"></div><div class="prog" style="width:20%;"></div></body></html>

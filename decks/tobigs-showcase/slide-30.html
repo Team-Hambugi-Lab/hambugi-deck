@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; overflow-wrap: break-word; }
+body { width: 720pt; height: 405pt; background: #FFFFFF; color: #1A1A1A;
+  font-family: 'Pretendard', sans-serif; padding: 32pt 44pt; display: flex; flex-direction: column; }
+.strip { display: flex; justify-content: space-between; align-items: center; }
+.label { font-size: 10pt; font-weight: 600; letter-spacing: 0.14em; color: #888888; }
+.num { font-family: 'Pretendard', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: #1F3A6E; line-height: 1.4; padding-bottom: 2pt; }
+.rule { width: 48pt; height: 2pt; background: #1F3A6E; margin: 10pt 0 0; }
+h1 { font-size: 24pt; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; text-wrap: balance; }
+h2 { font-size: 18pt; font-weight: 700; line-height: 1.4; }
+h3 { font-size: 14pt; font-weight: 700; line-height: 1.4; text-wrap: balance; }
+p, li { font-size: 12pt; line-height: 1.6; text-wrap: pretty; }
+b { font-weight: 700; }
+.muted { color: #888888; }
+.red { color: #1F3A6E; }
+.cap { font-size: 10pt; color: #888888; line-height: 1.5; }
+.small { font-size: 11pt; line-height: 1.5; }
+ul { list-style: none; }
+.hair { border-top: 1pt solid #BBBBBB; }
+.dark { border-top: 2pt solid #1A1A1A; }
+.redtop { border-top: 2pt solid #1F3A6E; }
+.chip { display: inline-block; background: #1F3A6E; color: #FFFFFF; padding: 3pt 8pt; border-radius: 2pt; }
+.prog { position: absolute; left: 0; bottom: 0; height: 4pt; background: #1F3A6E; }
+body { position: relative; }
+img { display: block; object-fit: contain; }
+table { border-collapse: collapse; width: 100%; }
+td, th { font-size: 11pt; padding: 5pt 6pt; text-align: left; border-top: 1pt solid #BBBBBB; }
+th { font-weight: 700; border-top: 2pt solid #1A1A1A; }
+</style>
+</head>
+<body><div class="strip"><p class="label chip" style="color:#FFFFFF;">03 빅콘 · 분석 STEP 1</p><p class="label">30 / 49</p></div><div style="margin-top:14pt;"><h1>고립 위험 지수: 두 테마, 여섯 지표</h1><div class="rule"></div></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:28pt;">
+  <div><p class="label red">THEME A · 고령 + 독거</p>
+  <ul><li class="hair" style="padding:5pt 0;">독거 · 연령: 1인가구율 × 50세 이상 비율</li><li class="hair" style="padding:5pt 0;">노후주거: 1989년 이전 주택 × 비아파트 비율</li><li class="hair" style="padding:5pt 0;">고령 비중: 65세 이상 비율</li></ul></div>
+  <div><p class="label red">THEME B · 중장년 독거 + 주거취약</p>
+  <ul><li class="hair" style="padding:5pt 0;">남성 · 독거: 50~64세 남성 × 1인가구율</li><li class="hair" style="padding:5pt 0;">비주택 · 연령: 고시원 등 거처 × 50세 이상</li><li class="hair" style="padding:5pt 0;">소형 · 비주거: 비주거용 건물 내 주택, 20㎡ 이하</li></ul></div>
+</div>
+<p class="small" style="margin-top:18pt;">테마별 표준화 점수를 백분위로 바꾸고, 종합 점수 = (A 백분위 + B 백분위) ÷ 2 를 1~5등급으로 나눴다.</p>
+<p class="cap" style="margin-top:4pt;">참고: America's Health Rankings Senior Report, CDC SVI, OECD 합성지수 지침, 복지부 중장년 남성 고독사 위험</p></div><div class="prog" style="width:61%;"></div></body></html>
