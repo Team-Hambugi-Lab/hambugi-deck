@@ -1,9 +1,9 @@
 4조 Team Hambugi 심화세션 결과물
 팀원: 김태은, 이정연, 진재언 (데이터 엔지니어링 트랙)
 
-[발표 자료]
-- 발표회 덱 (PDF, 발표 대본 포함 레포)
-  https://github.com/Team-Hambugi-Lab/hambugi-deck
+[GitHub 조직]
+- Team Hambugi Lab (비자부기, 빅콘테스트, 발표 자료 레포 전체)
+  https://github.com/Team-Hambugi-Lab
 
 [1] 제13회 전국 ICT융합 공모전 · 비자부기 (2026.08.28 제출)
 충북 외국인 주민을 위한 다국어 AI 비자 준비 서비스
